@@ -1,0 +1,48 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "0.22.1",
+        "jquery": "3.3.1",
+        "less": "3.8.1",
+        "less-loader": "4.1.0",
+        "popper.js": "1.14.5",
+        "vue": "2.5.17",
+        "vue-loader": "15.4.2",
+        "vue-template-compiler": "2.5.17",
+        "webpack-notifier": "1.7.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production",
+        "start": "concurrently -p \"{name}\" -n \"client,server\" -c \"gray.bgWhite,yellow.bgBlue\" \"yarn start:client\" \"yarn start:server\"",
+        "start:server": "php bin/console server:run",
+        "start:client": "yarn encore dev --watch",
+        "db:generate": "sh bin/database_generate.sh",
+        "db:update": "sh bin/database_update.sh",
+        "composer:update": "composer update",
+        "clear:cache": "php bin/console cache:clear --no-warmup",
+        "fixtures:load": "php bin/console doctrine:fixtures:load"
+    },
+    "dependencies": {
+        "@babel/preset-flow": "7.0.0",
+        "@sentry/browser": "4.4.2",
+        "awesomplete": "1.1.3",
+        "bootstrap": "4.1.3",
+        "bowser": "2.0.0-beta.3",
+        "concurrently": "4.1.0",
+        "dragscroll": "0.0.8",
+        "jquery-toast-plugin": "1.3.2",
+        "lightgallery.js": "1.1.1",
+        "lightslider": "^1.1.6",
+        "perfect-scrollbar": "1.4.0",
+        "pretty-checkbox": "3.0.3",
+        "rateyo": "2.3.5",
+        "slick-carousel": "1.8.1",
+        "viewerjs": "1.2.0",
+        "vue-multiselect": "2.1.0",
+        "vue-resource": "1.5.1"
+    }
+}

@@ -1,0 +1,10 @@
+<div class="category relative-overflow zoom-in">
+    <a href="{{ path('reading_category_show', {'slug': element.slug}) }}" class="d-block">
+        <div class='name'>{{ element.name | upper}}</div>
+        {% if vich_uploader_asset(element, 'imageFile') %}
+            <img src="{{ vich_uploader_asset(element, 'imageFile') }}" class="w-100 violet-mask" alt="{{ element.name }}" />
+        {% else %}
+            <img src="{{ asset('img/logo.png') }}" class="w-100 violet-mask" alt="{{ element.name }}" />
+        {% endif %}
+    </a>
+</div>

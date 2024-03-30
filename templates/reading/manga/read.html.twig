@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/views/manga/read.css') }}">
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block yandex %}{% endblock %}
+
+{% block body %}
+    <!-- If user has at least one pill available -->
+    {% if (app.user.pills >= readingSupport.manga.getPillPrice) or (paths|length > 0) %}
+        <div id="gallery" aria-hidden="true"
+             data-pills="{{ app.user.pills }}"
+             data-cost="{{ readingSupport.manga.pillPrice }}"
+             data-pattern="{{ paths[0] }}"
+             data-unlocked="{{ unlockedPages|length }}"
+             data-count="{{ readingSupport.pages|length }}"
+             data-default-placeholder-large="{{ asset('img/modules/reader/default-placeholder-large.jpg') }}"
+             data-default-placeholder-medium="{{ asset('img/modules/reader/default-placeholder-medium.jpg') }}"
+             data-payment-url="{{ path('payment') }}"></div>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block loginRegister %}{% endblock %}
+
+{% block modals %}
+    {% include 'base/modals/_recharge-pills.html.twig' %}
+{% endblock %}
+
+{% block disclaimer %}{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/views/manga/read.js') }}"></script>
+    {% if paths|length %}
+        <script>
+            let paths = [];
+
+            {% for path in paths %}
+                paths.push('{{ path }}');
+            {% endfor %}
+        </script>
+    {% endif %}
+{% endblock %}

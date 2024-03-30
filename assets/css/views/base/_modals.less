@@ -1,0 +1,128 @@
+@full: 100;
+@full-padding: 90;
+
+// Styles for body
+body {
+	&.modal-open {
+		overflow: hidden;
+		padding-right: 0 !important;
+	}
+}
+
+// General styles
+.modal-dialog {
+    @border-size: 4px;
+
+    &.large {
+        min-width: 600px;
+
+        @media screen and (max-width: @medium-screen) {
+            min-width: auto;
+        }
+    }
+
+    &.larger {
+        min-width: 800px;
+
+        @media screen and (max-width: @medium-screen) {
+            min-width: auto;
+        }
+    }
+
+	.modal-content {
+        background: transparent;
+
+        .modal-header, .modal-footer {
+            &.out {
+                padding: 0;
+                margin: -@modal-content-padding;
+            }
+        }
+
+		.modal-header {
+			border-bottom: none;
+			margin-top: -30px;
+
+			.modal-logo {
+				margin-top: -5px;
+				.position-state(absolute, 1);
+
+				img {
+					width: @modal-header-img-size;
+					height: @modal-header-img-size;
+				}
+			}
+		}
+
+		.modal-body {
+			box-shadow: @z-depth-1-half;
+			border-radius: @border-radius-base;
+			padding: @modal-content-padding;
+
+			&.t-borders {
+				border-top: @border-size solid @purple-dark;
+			}
+
+			&.b-borders {
+				border-bottom: @border-size solid @purple-dark;
+			}
+
+			&.x-borders {
+				.t-borders();
+				.b-borders();
+			}
+
+			&.y-borders {
+				border-left: @border-size solid @purple-dark;
+				border-right: @border-size solid @purple-dark;
+			}
+
+			&.borders {
+				.x-borders();
+				.y-borders();
+			}
+
+			.diagonal {
+				transform: skewY(-4deg);
+			}
+		}
+
+        .modal-footer {
+            border-top: none;
+
+            .modal-footer-content {
+                padding: @modal-content-padding (@modal-content-padding * 2);
+            }
+        }
+
+        &.no-border {
+            border: none;
+        }
+	}
+	
+	@media only screen and (max-width: @medium-screen) {
+		transform: translate(0,0) scale(.97) !important;
+	}
+}
+
+// Position & Size
+.modal {
+	&.show {
+		padding-right: 0 !important;
+	}
+	
+	&.fade {
+		&.top:not(.show) .modal-dialog {
+			transform: @modal-fade-top-transform;
+		}
+		&.left:not(.show) .modal-dialog {
+			transform: @modal-fade-left-transform;
+		}
+		&.right:not(.show) .modal-dialog {
+			transform: @modal-fade-right-transform;
+		}
+		&.bottom:not(.show) .modal-dialog {
+			transform: @modal-fade-bottom-transform;
+		}
+	}
+}

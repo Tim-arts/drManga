@@ -1,0 +1,19 @@
+<footer class="mt-5 px-4 py-3">
+    <div class="row">
+        <div class="col-4 col-lg-6 text-right">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="img-fluid img bigger object-fit-contain" />
+        </div>
+        <div class="col-8 col-lg-6 text-left">
+            <p class="h7">Tous les modèles apparaissant sur ce site ont au moins 18 ans. <br>En accédant à ce site vous confirmez que vous avez l'âge légal dans votre pays pour voir du contenu adulte et que vous désirez voir ce genre de contenu.</p>
+            <p class="h7">DRMANGA.COM Tous droits réservés | BDG, Centre Neptuna Rn8 Quartier Violesi 13320 Bouc Bel Air, France</p>
+            <p class="h7">
+                <a href="{{ path('conditions') }}" class="text-purple-light">Conditions d'utilisations</a> -
+                <a href="/mentions" class="text-purple-light">Mentions légales</a> -
+                {% if is_granted("ROLE_USER") %}
+                    <a href="#modal-support" data-toggle="modal" data-target="#modal-support" class="text-purple-light">Support</a> -
+                {% endif %}
+                <a href="#" class="text-purple-light">Version {{ version }}</a>
+            </p>
+        </div>
+    </div>
+</footer>

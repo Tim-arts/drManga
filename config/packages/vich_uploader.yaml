@@ -1,0 +1,21 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        sliders.manga_slides.image:
+            uri_prefix: /upload/sliders
+            upload_destination: '%kernel.project_dir%/public/upload/sliders'
+        reading.category.image:
+            uri_prefix: /upload/categories
+            upload_destination: '%kernel.project_dir%/public/upload/categories'
+        reading.manga.image:
+            uri_prefix: /upload/mangas
+            upload_destination: '%kernel.project_dir%/public/upload/mangas'
+            directory_namer: App\Utils\VichUploaderNaming\DirectoryNamer\MangaDirectoryNamer
+        reading.volume.image:
+            uri_prefix: /upload/mangas
+            upload_destination: '%kernel.project_dir%/public/upload/mangas'
+            directory_namer: App\Utils\VichUploaderNaming\DirectoryNamer\VolumeDirectoryNamer
+        user_management.user.avatar:
+            uri_prefix: /upload/users
+            upload_destination: '%kernel.project_dir%/public/upload/users'
+            directory_namer: App\Utils\VichUploaderNaming\DirectoryNamer\UserDirectoryNamer

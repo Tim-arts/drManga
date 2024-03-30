@@ -1,0 +1,34 @@
+<div class="modal fade top" id="modal-support" tabindex="-1" role="dialog" aria-labelledby="modal-support" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!--Content-->
+        <div id="modal-support-content" class="modal-content w-100 mx-auto no-border">
+            <div class="modal-header text-center justify-content-center align-self-center">
+                <div class="modal-logo">
+                    <img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="Logo" />
+                </div>
+            </div>
+            <div class="modal-body x-borders bg-grey-darker">
+                {{ form_start(form, {'action': path('contact'), 'attr': {'id': 'contact', 'novalidate': null}}) }}
+                    <h1 class="my-3 text-center">Support</h1>
+                    <div class="form-block my-2">
+                    {{ form_widget(form.department, {'id': 'contact[department]', 'attr': {'class': 'theme-profile w-100 w-lg-initial'}}) }}
+                    </div>
+                    <div class="form-block my-2">
+                        {{ form_widget(form.email, {'id': 'contact[email]', 'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'Votre adresse e-mail', 'data-type': 'email'}}) }}
+                    </div>
+                    <div class="form-block my-2">
+                        {{ form_widget(form.subject, {'id': 'contact[subject]', 'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'Intitulé', 'data-type': 'name'}}) }}
+                    </div>
+                    <div class="form-block my-2">
+                        {{ form_widget(form.message, {'id': 'contact[message]', 'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'Message', 'rows': 8}}) }}
+                    </div>
+                    <div class="form-block text-center mt-3">
+                        <button type="submit" class="btn rounded high larger no-border theme-2 mt-2 mt-lg-0 mx-auto ml-lg-auto">
+                            <span>Envoyer</span>
+                        </button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>

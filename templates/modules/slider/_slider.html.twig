@@ -1,0 +1,59 @@
+<div class="template">
+    <div class="d-flex template-header">
+        {% if data.elements %}
+            <h1 class="text-white">
+                <span>
+                    {% if data.back is defined %}
+                        {% if data.back %}
+                            <a href="{{ app.request.headers.get('referer') }}"> < </a>
+                        {% endif %}
+                    {% endif %}
+                    {{ data.title }}
+                </span>
+            </h1>
+        {% endif %}
+        {% if data.slider is defined %}
+            {% include "modules/slider/_arrows.html.twig" %}
+        {% endif %}
+        {% if data.dropdown is defined %}
+            <div class="dropdown d-inline-block ml-auto filter{{ data.dropdown.classes is defined ? ' ' ~ data.dropdown.classes }}">
+                <button class="btn dropdown-toggle" type="button" id="{{ data.dropdown.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ 'filters'|trans }}</button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="{{ data.dropdown.id }}">
+                    {% for link in data.dropdown.links %}
+                        <a class="dropdown-item" href="#">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="template-content {{ data.slider is defined ? 'h-scroll ' }}relative-overflow{{ data.scrollbar is not defined ? ' ps-hidden' }}{{ data.gutters is defined and data.gutters == false ? ' no-gutters' }}">
+        <div class="row mt-3 mx-0">
+            {% for element in data.elements %}
+                <div class="{{ data.size is defined ? 'tile-'~ data.size }}{{ data.slider is not defined ? ' mx-auto' }}">
+                    {%
+                        set _data = {
+                            title: {
+                                name: element.name
+                            },
+                            author: {
+                                name: 'Author'
+                            },
+                            slider: data.slider is defined ? data.slider,
+                            rating: {
+                                status: data.rating.status is defined ? data.rating.status,
+                                position: loop.index,
+                                top: data.rating.top is defined ? data.rating.top
+                            }
+                        }
+                    %}
+
+                    {% if data.template == 'books' %}
+                        {% include "modules/slider/_template-books.html.twig" with _data %}
+                    {% elseif data.template == 'categories' %}
+                        {% include "modules/slider/_template-categories.html.twig" with _data %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

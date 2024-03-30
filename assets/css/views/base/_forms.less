@@ -1,0 +1,73 @@
+@import (once) '../base/_inputs';
+
+.form-block, .form-inline {
+	.form-control {
+		border-radius: @border-radius-quad;
+		font-size: 14px;
+		padding: 7px 12px;
+		height: 40px;
+		box-shadow: none;
+		transition: all @time-transition-025;
+		
+		.placeholder(@grey-light);
+		
+		&.no-border {
+			border: @border-width-2 solid transparent;
+		}
+		
+		&.valid {
+			border: @border-width-2 solid @success;
+		}
+		
+		&.invalid {
+			border: @border-width-2 solid @error;
+		}
+		
+		&.search {
+			border: none;
+			
+			@media (max-width: @medium-screen-down) {
+				border-radius: 0;
+			}
+		}
+		
+		+ label {
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+		
+		&:hover {
+			background-color: lighten(@grey-dark, 4%);
+		}
+		
+		&:focus {
+			background-color: lighten(@grey-dark, 10%);
+			box-shadow: none;
+			outline: 0 !important;
+			
+			&:not(.no-border) {
+				border: 1px solid @grey-light;
+			}
+		}
+		
+		@media (max-width: @medium-screen) {
+			padding: 7px 15px;
+			
+			&:not(.no-border) {
+				border-radius: 0;
+			}
+		}
+	}
+}
+
+form {
+	a {
+		.position-state(relative, 3);
+	}
+}
+
+.input-group {
+	&.inline {
+		flex-wrap: nowrap;
+	}
+}

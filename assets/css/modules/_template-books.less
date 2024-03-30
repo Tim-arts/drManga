@@ -1,0 +1,205 @@
+@import '_rating';
+
+@default-books-width: 280;
+@default-books-offset: 20;
+@default-books-ratio: 1.4;
+
+@280: @default-books-width;
+
+/* Init the sliders */
+.CreateNewBooksSet(@280);
+
+#content {
+	.section {
+		&.books-template {
+            h1 {
+                display: inline-block;
+            }
+
+			.flip-book {
+				position: relative;
+				perspective: 1200px;
+				
+				.book-content {
+					position: absolute;
+					will-change: transform;
+					transform-style: preserve-3d;
+					transition: transform .5s;
+					border-radius: @border-radius-base @border-radius-double @border-radius-double @border-radius-base;
+					
+					> div {
+						display: block;
+						position: absolute;
+						border-radius: @border-radius-base @border-radius-double @border-radius-double @border-radius-base;
+						
+						&.book-front {
+							background-repeat: no-repeat;
+							background-size: cover;
+							
+							transform-style: preserve-3d;
+							transform-origin: 0 50%;
+							transition: transform .5s;
+							transform: translate3d(0, 0, 20px);
+							z-index: 10;
+							
+							> div {
+								position: absolute;
+								z-index: 1;
+								transform-style: preserve-3d;
+								
+								&.book-cover {
+									padding: 10px 20px;
+									
+									&:after {
+										content: '';
+										position: absolute;
+										top: 0;
+										left: 10px;
+										bottom: 0;
+										width: 3px;
+										background: rgba(0,0,0,0.06);
+										box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+									}
+								}
+							}
+							
+							&:after {
+								content: '';
+								position: absolute;
+								top: 1px;
+								bottom: 1px;
+								left: -1px;
+								width: 1px;
+								background-color: @black-alpha-1;
+							}
+						}
+						
+						&.book-side {
+							background-repeat: no-repeat;
+							background-size: cover;
+							background-position: -174px 0;
+							
+							width: 43px;
+							left: -21px;
+							transform: rotate3d(0,1,0,-90deg);
+
+							@media (max-width: @medium-screen) {
+								background-position: 0 0;
+							}
+						}
+					}
+					
+					&:hover {
+						transform: rotate3d(0,1,0,35deg);
+					}
+				}
+			}
+			
+			.book-informations {
+				position: relative;
+				
+				h3 {
+					margin-top: 0;
+                    // Format text with "..." at the end
+                    width: calc(100% - 0px);
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					
+					@media (max-width: @medium-screen) {
+						font-size: @font-size-medium;
+					}
+				}
+				
+				h4 {
+					margin-top: @slider-padding / 2;
+					
+					span {
+                        @media (max-width: @medium-screen) {
+                            font-size: @font-size-medium;
+                        }
+
+						&:last-child {
+							border-radius: @border-radius-quad;
+						}
+					}
+				}
+			}
+			
+			&:not(.slider) {
+				[class*="tile-"] {
+					margin-bottom: @slider-book-margin-bottom;
+				}
+			}
+		}
+	}
+}
+
+/* Collection mixin */
+.CreateNewBooksSet (@width) {
+	@index: @@width;
+	
+	@temp-width: @width * 1px;
+	@temp-height: (@width * @default-books-ratio) * 1px;
+	
+	.books-template {
+		.row {
+			> div:last-child {
+				margin-right: 0;
+			}
+			
+			.tile-@{index} {
+				width: @temp-width;
+				height: @temp-height;
+				
+				.flip-book {
+					height: @temp-height;
+					
+					.book-content {
+						> div {
+							height: @temp-height;
+							
+							.book-cover {
+								height: @temp-height;
+							}
+						}
+						
+						.book-side {
+							h2 {
+								width: @temp-height - 15px;
+							}
+						}
+					}
+				}
+				
+				@media (max-width: @medium-screen) {
+					@width-medium: (@width / 2) + ((@default-books-offset * ((@width * 100) / @default-books-width)) / 100) * 1px;
+					@height-medium: (@width-medium * @default-books-ratio) * 1px;
+					
+					width: @width-medium;
+					height: @height-medium;
+					
+					.flip-book {
+						height: @height-medium;
+						
+						.book-content {
+							> div {
+								height: @height-medium;
+								
+								.book-cover {
+									height: @height-medium;
+								}
+							}
+							
+							.book-side {
+								h2 {
+									width: @height-medium;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

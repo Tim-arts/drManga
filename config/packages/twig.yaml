@@ -1,0 +1,11 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - '@SonataCore/Form/datepicker.html.twig'
+    globals:
+        fos_csrf_provider: "@security.csrf.token_manager"
+        paypal_env: '%env(PAYPAL_ENV)%'
+        securion_public_key: '%env(SECURION_PUBLIC_KEY)%'
+        version: '%version%'

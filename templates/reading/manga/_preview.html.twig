@@ -1,0 +1,6 @@
+{% for preview in previews %}
+    <li class="mr-1 position-relative pointer">
+        <div class="d-flex preview-image-overlay w-100 h-100 position-absolute z-index-1 pointer-events-none align-items-center justify-content-center"></div>
+        <img src="{{ preview.src }}" class="img-fluid" alt="{{ preview.alt }}">
+    </li>
+{% endfor %}

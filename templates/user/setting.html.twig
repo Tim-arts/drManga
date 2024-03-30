@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/views/user/setting.css') }}">
+{% endblock %}
+
+{%
+    set data = {
+        visibility: {
+            birthday: true,
+            gender: true,
+            stats: true,
+            newsletter: true,
+            notifications: true,
+            cookies: true
+        }
+    }
+%}
+
+{% block body %}
+
+    <!-- User information -->
+    <section id="user-information" class="section container-fluid">
+        <header class="text-center">
+            <h1 class="h2 mt-4 font-weight-bold">GÉRER MES PARAMÈTRES</h1>
+            <h2 class="h4 mt-0 text-purple-light">Configurations et permissions concernant mes informations</h2>
+        </header>
+        {{ form_start(profileForm, {'action': path('user_management_user_profile_edit'), 'attr': {'id': 'form-profile', 'class': 'content', 'novalidate': null}}) }}
+        <div class="category my-5">
+            <h3 class=" text-center text-lg-left">Mes informations personnelles</h3>
+            <!-- Avatar -->
+            <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+                {%
+                    set _data = {
+                        title: 'Avatar',
+                        subtitle: 'L\'image qui vous représentera sur DrManga'
+                    }
+                %}
+
+                {% include "user/_header-field.html.twig" with _data %}
+                <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+                    <div class="d-flex position-relative mx-2" data-type="avatar" data-toggle="tooltip" data-placement="top" title="Changer son avatar">
+                        <img src="{{ app.user|defaultAvatar }}" id="avatar" class="img-fluid img big object-fit-contain rounded pointer" alt="Avatar" />
+                        {{ form_widget(profileForm.avatarFile, {'id': 'user-upload-avatar', 'attr': {'class': 'visibility-reduced'}}) }}
+                    </div>
+                </div>
+            </div>
+            <!-- Mail -->
+            <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+                {%
+                    set _data = {
+                    title: 'Mon adresse mail',
+                    subtitle: 'L\'adresse utilisée doit être valide'
+                }
+                %}
+
+                {% include "user/_header-field.html.twig" with _data %}
+                <div class="d-flex flex-column flex-lg-initial col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+                    <div class="d-flex element-container mx-auto mx-lg-0">
+                        <button type="button" id="validate-email" class="btn rounded-quad theme-1 mb-2 mb-lg-0">Valider mon email</button>
+                    </div>
+                    <div class="d-flex element-container position-relative pencil-icon mx-auto mx-lg-0">
+                        {{ form_widget(profileForm.email, {'id': 'user-mail', 'attr': {'class': 'p-2 pr-5 mx-lg-1 text-grey-light font-weight-bold'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex col-12 py-3 my-0 my-lg-4 justify-content-center">
+            <button type="submit" class="btn theme-1 rounded-lg-round">Enregistrer les modifications</button>
+        </div>
+        {{ form_end(profileForm) }}
+
+        {{ form_start(changePasswordForm, {'action': path('user_management_user_change_password'), 'attr': {'id': 'form-change-password', 'class': 'content'}}) }}
+
+        <div class="category my-5">
+            <h3 class=" text-center text-lg-left">Modifier mon mot de passe</h3>
+            <!-- Old password -->
+            <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+                {%
+                    set _data = {
+                    title: 'form.current_password'|trans({}, 'FOSUserBundle'),
+                    subtitle: '7 caractères minimum dont 1 minuscule et un caractère spécial'
+                }
+                %}
+
+                {% include "user/_header-field.html.twig" with _data %}
+                <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+                    <div class="element-container position-relative pencil-icon">
+                        {{ form_widget(changePasswordForm.current_password, {'id': 'user-old-password', 'attr': {'class': 'p-2 pr-5 mx-1 text-grey-light font-weight-bold'}}) }}
+                    </div>
+                </div>
+            </div>
+            <!-- New password -->
+            <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+                {%
+                    set _data = {
+                    title: 'form.new_password'|trans({}, 'FOSUserBundle'),
+                    subtitle: '7 caractères minimum dont 1 minuscule et un caractère spécial'
+                }
+                %}
+
+                {% include "user/_header-field.html.twig" with _data %}
+                <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+                    <div class="element-container position-relative pencil-icon">
+                        {{ form_widget(changePasswordForm.plainPassword['first'], {'id': 'user-new-password', 'attr': {'class': 'p-2 pr-5 mx-1 text-grey-light font-weight-bold'}}) }}
+                    </div>
+                </div>
+            </div>
+            <!-- Password confirmation -->
+            <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+                {%
+                    set _data = {
+                    title: 'form.new_password_confirmation'|trans({}, 'FOSUserBundle'),
+                    subtitle: '7 caractères minimum dont 1 minuscule et un caractère spécial'
+                }
+                %}
+
+                {% include "user/_header-field.html.twig" with _data %}
+                <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+                    <div class="element-container position-relative pencil-icon">
+                        {{ form_widget(changePasswordForm.plainPassword['second'], {'id': 'user-new-password-confirmation', 'attr': {'class': 'p-2 pr-5 mx-1 text-grey-light font-weight-bold'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex col-12 py-3 my-0 my-lg-4 justify-content-center">
+            <button type="submit" class="btn theme-1 rounded-lg-round">Modifier mon mot de passe</button>
+        </div>
+        {{ form_end(changePasswordForm) }}
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/views/user/setting.js') }}"></script>
+{% endblock %}

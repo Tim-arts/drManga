@@ -1,0 +1,70 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand text-grey-lighter" href="{{ path('index') }}">
+            <img src="{{ asset('img/logo.png') }}" class="img big img-fluid object-fit-contain" alt="DrManga" />
+        </a>
+        <button class="navbar-toggler text-grey-lighter" type="button" data-toggle="collapse" data-target="#navbar-navigation" aria-controls="navbar-navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="{{ asset('img/svg/menu.svg') }}" class="svg" alt="Menu" />
+        </button>
+
+        {{ render(controller('App\\Controller\\Reading\\MangaController::_list')) }}
+
+        <div id="navbar-navigation" class="collapse navbar-collapse flex-grow-0 ml-auto text-nowrap">
+            <ul class="navbar-nav">
+                <li class="nav-item d-flex">
+                    <a class="nav-link text-center text-grey-lighter" href="{{ path('index') }}" data-toggle="tooltip" data-placement="bottom" title="{{ 'header.title'|trans }}">
+                        <img src="{{ asset('img/svg/home.svg') }}" class="svg" alt="{{ 'header.title'|trans }}" />
+                    </a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                    {#<li class="nav-item d-flex">#}
+                        {#<a class="nav-link text-center text-grey-lighter" href="#" data-toggle="tooltip" data-placement="bottom" title="Notifications">#}
+                            {#<img src="{{ asset('img/svg/notifications.svg') }}" class="svg" alt="Notifications" />#}
+                        {#</a>#}
+                    {#</li>#}
+                    <li class="nav-item d-flex add">
+                        <a class="nav-link nav-pill d-flex text-center text-grey-lighter" href="{{ path('payment') }}" data-toggle="tooltip" data-placement="bottom" title="Acheter des pilules">
+                            <div class="nav-pill-content align-self-center mx-auto bg-grey-dark">
+                                <img src="{{ asset('img/svg/add.svg') }}" class="svg not-filtered" alt="Acheter des pilules" />
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex">
+                        <a class="nav-link nav-pill d-flex text-center text-grey-lighter" href="{{ path('payment') }}" data-toggle="tooltip" data-placement="bottom" title="Se recharger en pilules" data-container="body">
+                            <div class="nav-pill-content align-self-center mx-auto bg-grey-dark contains-text">
+                                <span id="pills-user-count">{{ app.user.pills }}</span>
+                                <img src="{{ asset('img/svg/pill.svg') }}" class="svg not-filtered" alt="Se recharger en pilules" />
+                            </div>
+                        </a>
+                    </li>
+                    {% if is_granted('ROLE_SONATA_ADMIN') %}
+                    <li class="nav-item d-flex">
+                        <a class="nav-link text-center text-grey-lighter" href="{{ path('sonata_admin_dashboard') }}" data-toggle="tooltip" data-placement="bottom" title="Admin">
+                            <img src="{{ asset('img/svg/admin.svg') }}" class="svg" alt="Administration" />
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item d-flex dropdown">
+                        <a class="nav-link dropdown-toggle text-center text-grey-lighter" href="#" role="button" id="dropdown-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ asset('img/svg/settings.svg') }}" class="svg" alt="Paramètres" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-center-sm" aria-labelledby="dropdown-menu-link">
+                            <a class="dropdown-item" href="{{ path('user_management_user_profile', {'usernameCanonical': app.user.usernameCanonical}) }}">Mon profil</a>
+                            <a class="dropdown-item" href="{{ path('user_management_user_setting') }}">Mes paramètres</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#modal-support" data-toggle="modal" data-target="#modal-support">Nous contacter</a>
+                            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item d-flex align-items-center justify-content-center">
+                        <a href="#" id="open-modal-login" class="btn login-form-activator default rounded upper">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center justify-content-center">
+                        <a href="#" id="open-modal-register" class="btn register-form-activator theme-2 rounded upper">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>

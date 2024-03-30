@@ -1,0 +1,65 @@
+/* Import external dependencies */
+@import '~rateyo/src/jquery.rateyo.css';
+
+/* Import override dependencies */
+@import '../override/_rateyo';
+
+/* Import modules */
+@import (reference) 'base/__utilities';
+@import (once) '_template-categories';
+@import (once) '_template-books';
+
+.section {
+	.template {
+        .relative-overflow();
+
+		.template-header {
+            .arrows-slider {
+                margin-top: 25px;
+
+                .arrow {
+                    width: @svg-medium-size;
+                    height: @svg-medium-size;
+                    border-radius:@border-radius-double;
+                    will-change: background-color;
+                    transition: background-color @time-transition-025;
+                    .bg-grey-dark();
+
+                    &.left {
+                        margin-right: @spacing-1;
+                    }
+
+                    &.right {
+                        margin-left: @spacing-1;
+                    }
+
+                    &:hover {
+                        background-color: lighten(@grey-dark, 5%);
+                    }
+                }
+            }
+
+			.dropdown {
+				margin-top: 25px;
+			}
+		}
+
+		.template-content {
+			> .row {
+				> [class*="tile-"] {
+					position: relative;
+					display: inline-block;
+                    padding: 0 @slider-padding 0 0;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+				}
+			}
+
+            &.ps--scrolling-x {
+                .pointer-events-none();
+            }
+		}
+	}
+}

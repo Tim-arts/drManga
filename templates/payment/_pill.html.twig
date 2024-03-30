@@ -1,0 +1,28 @@
+{% if pill.price is defined %}
+    {% set price = pill.price|split('.') %}
+{% endif %}
+
+<div class="pill d-flex align-items-center flex-column pointer mx-auto {{ pill.size is defined ? pill.size : 'my-2' }}">
+    <div class="pill-top d-flex justify-content-center text-center {{ pill.color }} w-100 flex-column flex-grow-1">
+        <h2 class="font-weight-bold mb-0">{{ payments is defined ? pill.pillPrice|number_format(0, '.', ' ') : pill.pillPrice|number_format(1) + 0 }}</h2>
+        <h3>Pilules</h3>
+        {% if payments is defined %}
+            <div class="paypal-button payment-button hidden mt-1 disabled">
+                {% include "payment/_paypal-button.html.twig" %}
+            </div>
+            <div class="paysafecard-button payment-button mt-1 hidden disabled">
+                {% include "payment/_paysafe-button.html.twig" %}
+            </div>
+            <div class="securion-button payment-button mt-1 disabled">
+                {% include "payment/_securion-button.html.twig" %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="pill-bottom d-flex justify-content-center text-center w-100 flex-column flex-grow-1">
+        {% if pill.price is defined %}
+            <h2 class="font-weight-bold">{{ price[0] }}<span class="position-relative mx-1">, {{ price[1] }}</span></h2>
+        {% else %}
+            <h3 class="w-s-break">{{ pill.indication is defined ? pill.indication }}</h3>
+        {% endif %}
+    </div>
+</div>

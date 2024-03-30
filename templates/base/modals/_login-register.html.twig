@@ -1,0 +1,17 @@
+<div class="modal fade top" id="modal-login-register" tabindex="-1" role="dialog" aria-labelledby="modal-login-register" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!--Content-->
+        <div id="modal-login-register-content" class="modal-content w-100 mx-auto no-border">
+            <div class="modal-header text-center justify-content-center align-self-center">
+                <div class="modal-logo">
+                    <img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="Logo" />
+                </div>
+            </div>
+            <div class="modal-body x-borders bg-grey-darker">
+                {% include 'base/_login-form.html.twig' %}
+                {{ render(url('fos_user_registration_register')) }}
+                {% include 'base/_forgot-password.html.twig' %}
+            </div>
+        </div>
+    </div>
+</div>

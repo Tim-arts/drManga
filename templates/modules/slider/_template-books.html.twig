@@ -1,0 +1,33 @@
+<div class="book">
+    <div class="flip-book w-100">
+        <a href="{{ path('reading_manga_show', {'slug': element.slug}) }}" class="d-block w-100" name="{{ element.slug }}">
+            <div class="book-content w-100">
+                <div class="book-front w-100" style="background-image: url('{{ vich_uploader_asset(element, 'imageFile') }}')">
+                    {% if _data.rating.top is defined and _data.rating.top is not empty %}
+                        {% include "modules/slider/_rating.html.twig" with _data %}
+                    {% endif %}
+                    <div class="book-cover d-block w-100"></div>
+                </div>
+                <div class="book-side" style="background-image: url('{{ vich_uploader_asset(element, 'imageFile') }}')"></div>
+            </div>
+        </a>
+    </div>
+    {% if _data.rating.status is defined and _data.rating.status is not empty %}
+        <div class="book-informations">
+            <div class="book-title d-flex mt-3">
+                <h3 class="d-flex h4 col-7 col-md-6 text-white px-0">{{ element.name }}</h3>
+                <div class="d-flex col-5 col-md-6 rateyo px-0 text-right" data-rateyo-num-stars="5" data-rateyo-rating="{{ element.note }}" data-rateyo-star-width="20px" data-rateyo-read-only="true"></div>
+            </div>
+            <div class="d-flex book-author">
+                <h4 class="d-inline-flex mr-auto">
+                    <span class="mr-auto text-grey-light">{{ 'by'|trans }} {{ element.author.name }}</span>
+                </h4>
+                {% if element.categories %}
+                    <div class="d-inline-flex ml-auto align-items-center">
+                        <a href="#" class="tag d-none">{{ element.categories.first }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</div>

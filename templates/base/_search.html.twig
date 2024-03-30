@@ -1,0 +1,8 @@
+<form id="search-form" class="navbar-search-input form-inline my-2 my-lg-0 w-100">
+    <input id="input-search" class="form-control no-border w-100 search text-white bg-grey-dark awesomplete" type="search" placeholder="{{ 'input.search'|trans }}..." aria-label="Search" data-list="search-list" list="search-list">
+    <datalist id="search-list">
+        {% for manga in mangas %}
+            <option data-url="{{ path('reading_manga_show', {'slug': manga.slug}) }}">{{ manga.name }}</option>
+        {% endfor %}
+    </datalist>
+</form>

@@ -1,0 +1,108 @@
+/* Import external dependencies */
+@import '~rateyo/src/jquery.rateyo.css';
+
+/* Import override dependencies */
+@import '~viewerjs/dist/viewer.min.css';
+@import '../../override/_rateyo';
+
+@import (reference) '../../modules/base/__core';
+
+/* Import internal dependency */
+@import '../base/_pills';
+
+body {
+    background: #020202 url('/img/bg.jpg') 0 0 no-repeat;
+}
+
+#product {
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            padding: 0;
+        }
+    }
+
+    #book-informations {
+        .category {
+            .text-grey-light();
+        }
+
+        #tomes {
+            > ul {
+                max-height: 375px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                position: relative;
+            }
+            li {
+                will-change: background-color;
+                transition: background-color @time-transition-025;
+
+                a {
+                    text-decoration: none;
+                    will-change: color;
+                    transition: color @time-transition-025;
+
+                    .svg {
+                        will-change: transform;
+                        transition: transform @time-transition-025;
+                        transform: translateX(-40px);
+                    }
+
+                    img {
+                        height: 115px;
+                        max-width: 85px;
+                    }
+                }
+
+                &:hover {
+                    .bg-grey-dark();
+
+                    a {
+                        .text-grey-lighter();
+
+                        .svg {
+                            transform: translateX(-30px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #book-content {
+        .preview-counter {
+            top: -35px;
+        }
+
+        ul {
+            li {
+                .preview-image-overlay {
+                    opacity: 0;
+                    transition: background-color .3s ease-out, opacity .3s ease-out;
+
+                    &:after {
+                        content: url('/img/svg/extend.svg');
+                        width: @svg-bigger-size;
+                        height: @svg-bigger-size;
+                        .position-state(absolute);
+                    }
+                }
+
+                &:hover {
+                    .preview-image-overlay {
+                        opacity: 1;
+                        background-color: @black-alpha-5;
+                    }
+                }
+            }
+
+            img {
+                .pointer();
+            }
+        }
+    }
+}

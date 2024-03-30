@@ -1,0 +1,78 @@
+{% form_theme form 'form/fields.html.twig' %}
+
+<section class="modal-body-container animated animatedFadeInUp" data-form="register" data-step="0">
+    <header class="text-center">
+        <div class="modal-content-title">
+            <h1 class="mt-3">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</h1>
+            <div class="my-1">
+                <span class="text-purple-dark"><!--Étape</span><span class="header-step text-purple-dark"> 01 </span><span class="text-purple-dark">- -->{{ 'your_information'|trans }}</span>
+            </div>
+        </div>
+        <div class="modal-steps">
+            <div></div>
+        </div>
+    </header>
+        {{ form_start(form, {'action': path('fos_user_registration_register'), 'attr': {'id': 'fos_user_registration_form', 'novalidate': null}}) }}
+        <div class="modal-body mb-1">
+            <div class="form-block mb-4">
+                {{ form_widget(form.username, {'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.username', 'data-type': 'name'}}) }}
+            </div>
+            <div class="form-block mb-4">
+                {{ form_widget(form.email, {'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.email', 'data-type': 'email'}}) }}
+            </div>
+
+            {#<div class="form-block mb-4">#}
+                {#<div class="text-grey-light">{{ 'register_form.birthdate_rgpd'|trans }}</div>#}
+                {#{{ form_widget(form.birthdate, {'attr': {'class': 'd-flex flex-column flex-lg-initial'}}) }}#}
+            {#</div>#}
+
+            <!-- Separation begin -->
+            <div class="form-block my-4">
+                <div class="d-flex justify-content-center position-relative">
+                    <img src="{{ asset('img/svg/lock.svg') }}" class="svg mask-rounded" alt="Sécurité" />
+                </div>
+                <hr class="w-100 dotted grey-dark" />
+            </div>
+            <!-- Separation end -->
+
+            <div class="e-s-5"></div>
+
+            <div class="form-block my-4">
+                {{ form_widget(form.plainPassword['first'], {'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.password', 'minlength': '7', 'data-type': 'password'}}) }}
+            </div>
+            <div class="form-block mb-4">
+                {{ form_widget(form.plainPassword['second'], {'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.password_confirmation', 'data-type': 'confirmationPassword'}}) }}
+            </div>
+            <div class="form-block mb-4 text-center text-lg-left">
+                <div class="pretty p-bigger p-default p-round p-thick p-smooth">
+                    {{ form_widget(form.settings.subscribedToNewsletter, {'attr': {'id': 'modal-register-subscribe-newsletter', 'class': 'form-control no-border w-100 text-white bg-grey-dark', 'data-type': 'newsletter'}}) }}
+                    <div class="state p-success">
+                        <label>{{ 'register_form.label.newsletter'|trans }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-block mb-4 text-center text-lg-left">
+                <div class="pretty p-default p-bigger p-default p-round p-thick p-smooth">
+                    <input type="checkbox" id="modal-register-accept-conditions" name="modal-register-accept-conditions" data-type="conditions" />
+                    <div class="state p-success">
+                        <label>{{ 'register_form.label.terms_of_use'|trans({"%url%": path('conditions')})|raw }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <button type="button" id="register-display-login-section" class="btn rounded high upper contains-icon mx-auto mr-lg-auto theme-3" data-section-open="login" data-section-close="register">
+                    <span>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</span>
+                    <span class="icon bg-grey-darker">
+                        <img src="{{ asset('img/svg/right-chevron-white.svg') }}" class="svg small vertical-align-sub" alt="Direction droite" />
+                    </span>
+                </button>
+                <button type="submit" class="btn rounded high upper no-border contains-icon theme-2 mt-2 mt-lg-0 mx-auto ml-lg-auto">
+                    <span>{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</span>
+                    <span class="icon bg-grey-darker">
+                        <img src="{{ asset('img/svg/right-chevron-white.svg') }}" class="svg small vertical-align-sub" alt="Direction droite" />
+                    </span>
+                </button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</section>

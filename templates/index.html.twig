@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'header.title'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/views/index.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if app.flashes('messages') is defined and app.flashes('messages') is not empty %}
+        <div id="warnings">
+            {% for message in app.flashes('message') %}
+                {% include "user/_warning.html.twig" with message %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Slider -->
+    <section id="home-slider" class="section d-flex">
+        {% include "modules/_slick-slider.html.twig" %}
+    </section>
+    <!-- Top 10 -->
+    <section id="top-manga" class="section slider arrows books-template bg-grey-darker">
+        {%
+            set data = {
+                title: 'Top 10',
+                size: 280,
+                slider: true,
+                rating: {
+                    'status': true,
+                    'top': true
+                },
+                elements: topMangas,
+                template: 'books'
+            }
+        %}
+
+        {% include "modules/slider/_slider.html.twig" with data %}
+    </section>
+    <!-- Categories -->
+
+    <section id="categories" class="section slider arrows categories-template w-100">
+        {%
+            set data = {
+                title: 'categories.heading'|trans,
+                size: 280,
+                slider: true,
+                template: 'categories',
+                elements: categories
+            }
+        %}
+        {% include "modules/slider/_slider.html.twig" with data %}
+    </section>
+    <!-- Tous les mangas -->
+    <section id="all-manga" class="section books-template">
+        {#%
+            set data = {
+                title: 'all_manga.heading'|trans,
+                size: 280,
+                rating: {
+                    status: true
+                },
+                elements: mangas,
+                template: 'books',
+                dropdown: {
+                    id: 'mangas-filters',
+                    classes: 'theme-1',
+                    links: [
+                        {
+                            title: 'filters.popularity'|trans
+                        },
+                        {
+                            title: 'filters.date'|trans
+                        }
+                    ]
+                },
+                gutters: false
+            }
+        %#}
+
+        {%
+            set data = {
+                title: 'all_manga.heading'|trans,
+                size: 280,
+                rating: {
+                    status: true
+                },
+                elements: mangas,
+                template: 'books',
+                gutters: false
+            }
+        %}
+
+        {% include "modules/slider/_slider.html.twig" with data %}
+    </section>
+    <section id="see-more" class="section see-more">
+        <a href="#" id="load-more" class="btn rounded larger theme-1 w-100">{{ 'button.see_more_mangas'|trans }}</a>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/views/index.js') }}"></script>
+{% endblock %}

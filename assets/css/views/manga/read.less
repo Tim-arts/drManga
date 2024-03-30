@@ -1,0 +1,192 @@
+@import (css) url('https://fonts.googleapis.com/css?family=Paytone+One');
+
+/* Import external dependencies */
+@import '~lightgallery.js/dist/css/lightgallery.min.css';
+
+@import (reference) '../../modules/base/_variables';
+@import (reference) '../../modules/base/_colors';
+@import (reference) '../../modules/base/_helpers';
+
+#gallery {
+    a {
+        img {
+            will-change: opacity;
+            transition: opacity @time-transition-025;
+
+            &:hover {
+                opacity: .6;
+            }
+        }
+
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.lg-slide {
+    .lg-close {
+        .hidden();
+    }
+}
+
+.lg-hide-items .lg-next {
+    opacity: 0 !important;
+    transform: translate3d(10px,0,0) !important;
+}
+
+.lg-outer {
+    #lg-counter {
+        font-weight: bold;
+        padding-top: 0;
+    }
+
+    // Buttons
+    .lg-toolbar {
+        @icon-default-color: #999;
+
+        .lg-bookmarks {
+            svg {
+                top: -4px;
+                position: relative;
+
+                path {
+                    fill: none;
+                    stroke: @icon-default-color;
+                    stroke-width: 2;
+                    stroke-miterlimit: 10;
+                    will-change: stroke;
+                    transition: stroke @time-transition-025;
+                }
+            }
+
+            &.active {
+                svg {
+                    path {
+                        stroke: @purple-dark;
+                    }
+                }
+
+                &:hover {
+                    path {
+                        stroke: lighten(@purple-dark, 10%);
+                    }
+                }
+            }
+
+            &:hover {
+                path {
+                    stroke: @white;
+                }
+            }
+        }
+
+        .lg-counter-pills {
+            font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .lg-pill {
+            svg {
+                top: -4px;
+                position: relative;
+
+                path {
+                    fill: @icon-default-color;
+                    stroke: @icon-default-color;
+                    will-change: fill, stroke;
+                    transition: fill @time-transition-025, stroke @time-transition-025;
+                }
+            }
+
+            &:hover {
+                path {
+                    fill: white;
+                    stroke: white;
+                }
+            }
+        }
+
+        .lg-home {
+            display: inline-block;
+            vertical-align: middle;
+
+            a {
+                display: block;
+                padding: 12px 20px;
+                transition: background @time-transition-025;
+                .bg-purple-dark();
+            }
+
+            path {
+                fill: white;
+                stroke: white;
+                will-change: fill, stroke;
+                transition: fill @time-transition-025, stroke @time-transition-025;
+            }
+
+            &:hover {
+                a {
+                    background: darken(@purple-dark, 10%);
+                }
+            }
+        }
+    }
+
+    .lg-actions {
+        .lg-prev, .lg-next {
+            background: none;
+
+            &:before, &:after {
+                content: none;
+            }
+
+            span {
+                font-size: @svg-small-size;
+
+                @media screen and (max-width: @medium-screen) {
+                    font-size: @svg-extra-small-size;
+                }
+            }
+
+            path {
+                transition: fill @time-transition-05;
+                fill: lighten(@purple-dark, 15%);
+            }
+
+            @media screen and (max-width: @medium-screen) {
+                .btn {
+                    img, svg {
+                        width: @svg-extra-small-size;
+                        height: @svg-extra-small-size;
+                        vertical-align: text-bottom;
+                    }
+                }
+            }
+
+        }
+
+        .lg-next {
+            will-change: opacity, visibility, right;
+            transition: all @time-transition-025;
+            // Initial state
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+/* Classes */
+.smooth-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    .pointer-events-none();
+}
+
+.md-vertical-align-sub {
+    @media screen and (max-width: @medium-screen) {
+        vertical-align: sub;
+    }
+}

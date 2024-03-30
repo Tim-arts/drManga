@@ -1,0 +1,38 @@
+@import (reference) '../../modules/base/__core';
+
+body {
+    background: #020202 url('/img/bg.jpg') 0 0 no-repeat;
+    background-size: cover;
+
+    @media (max-width: @medium-screen) {
+        background-size: auto;
+    }
+}
+
+@progressbar-height: 30px;
+
+#user-informations {
+    .progress {
+        height: @progressbar-height;
+        border-radius: @border-radius-bigger;
+
+        .progress-bar {
+            border-radius: @border-radius-bigger;
+        }
+    }
+
+    .stat {
+        border: 2px solid @grey-darker;
+        will-change: border-color, transform;
+        transition: border-color .3s linear, transform @time-transition-025;
+
+        &.ranking {
+            .pointer();
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            .border-color-purple-dark();
+        }
+    }
+}

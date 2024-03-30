@@ -1,0 +1,135 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'fr'
+    locales: ['fr', 'en']
+    version: '1.0.10'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    App\Utils\VichUploaderNaming\DirectoryNamer\MangaDirectoryNamer:
+        public: true
+
+    App\Utils\VichUploaderNaming\DirectoryNamer\VolumeDirectoryNamer:
+        public: true
+
+    App\Utils\VichUploaderNaming\DirectoryNamer\UserDirectoryNamer:
+        public: true
+
+    # Sonata Admin
+    App\Admin\Commerce\PillOfferAdmin:
+        arguments: [~, App\Entity\Commerce\PillOffer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: PillOffer }
+
+    App\Admin\Reading\AuthorAdmin:
+        arguments: [~, App\Entity\Reading\Author, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Author }
+
+    App\Admin\Reading\CategoryAdmin:
+        arguments: [~, App\Entity\Reading\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+
+    App\Admin\Reading\MangaAdmin:
+        arguments: [~, App\Entity\Reading\Manga, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Manga }
+        calls:
+            - [addChild, ['@App\Admin\Reading\VolumeAdmin']]
+            - [addChild, ['@App\Admin\Reading\Manga\PageAdmin']]
+
+    App\Admin\Reading\Manga\PageAdmin:
+        arguments: [~, App\Entity\Reading\Page, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Page }
+        calls:
+            - [setTranslatableListener, ['@stof_doctrine_extensions.listener.translatable']]
+
+    App\Admin\Reading\PublisherAdmin:
+        arguments: [~, App\Entity\Reading\Publisher, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Publisher }
+
+    App\Admin\Reading\VolumeAdmin:
+        arguments: [~, App\Entity\Reading\Volume, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Volume }
+        calls:
+            - [addChild, ['@App\Admin\Reading\Volume\PageAdmin']]
+
+    App\Admin\Reading\Volume\PageAdmin:
+        arguments: [~, App\Entity\Reading\Page, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Page }
+        calls:
+            - [setTranslatableListener, ['@stof_doctrine_extensions.listener.translatable']]
+
+    App\Admin\UserManagement\UserAdmin:
+        arguments: [~, App\Entity\UserManagement\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+
+    App\Admin\UserManagement\User\SettingsAdmin:
+        arguments: [~, App\Entity\UserManagement\User\Settings, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+
+    App\Admin\Slider\MangaSlideAdmin:
+        arguments: [~, App\Entity\Slider\MangaSlide, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: MangaSlide }
+
+    App\Admin\Statistic\StatisticAdmin:
+        arguments: [~, ~, App\Controller\Admin\StatisticController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Stats }
+
+    #Payment Service
+    App\PaymentService\Paypal:
+        arguments:
+            $privateKey: '%env(PAYPAL_KEY)%'
+
+    App\PaymentService\Paysafe:
+        arguments:
+            $privateKey: '%env(PAYSAFE_KEY)%'
+            $callbackUrl: '%env(PAYSAFE_URL)%'
+
+    App\PaymentService\Securion:
+        arguments:
+            $privateKey: '%env(SECURION_PRIVATE_KEY)%'
+
+    # Mailjet
+    App\Mailer\Mailjet:
+        arguments:
+            $publicKey: '%env(MAILJET_PUBLIC_KEY)%'
+            $privateKey: '%env(MAILJET_PRIVATE_KEY)%'
+
+    # Twig
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }

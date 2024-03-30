@@ -1,0 +1,78 @@
+<div class="modal fade top" id="modal-recharge-pills" tabindex="-1" role="dialog" aria-labelledby="modal-recharge-pills" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered larger mx-auto" role="document">
+        <!--Content-->
+        <div id="modal-recharge-pills-content" class="modal-content w-100 borders">
+            <div class="modal-header text-center justify-content-center align-self-center">
+                <div class="modal-logo">
+                    <img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="Logo" />
+                </div>
+            </div>
+            <div class="modal-body borders rounded bg-grey-darker">
+                <div class="row">
+                    <div class="information col-12">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h1>Oups.. Vous n'avez pas assez de pilules !</h1>
+                            </div>
+                            <div class="col-12">
+                                <h2 class="mt-4 font-party-one d-inline-block">
+                                    <span>
+                                        <img src="{{ asset('img/svg/book-white.svg') }}" alt="Icône de livre" class="svg tall" />
+                                    </span>
+                                    <span>{{ readingSupport.manga.name }}</span>
+                                    {% if volume %}<span> - {{ volume.name }}</span>{% endif %}
+                                    <span class="h5">({{ readingSupport.pages|length }} pages)</span>
+                                </h2>
+                                <h3 class="h4 mt-2">
+                                    {% set numberPillsNeeded = 1 %}
+                                    <span class="d-block mt-2">Attention, vous avez actuellement <span class="text-purple-light">{{ app.user.pills }}</span> pilules ! L'accès à cette page requiert d'avoir au
+                                        moins <span class="text-purple-light">{{ numberPillsNeeded }}</span> pilule(s) dans votre inventaire pour commencer ou continuer la lecture.</span>
+                                    <br />
+                                    <span>Si vous n'êtes pas encore familier avec notre système de lecture nous vous conseillons d'en prendre connaissance afin de vous familiariser
+                                        avec le concept.</span>
+                                    <br />
+                                    <br />
+                                    <span>Il vous suffira simplement de recharger la page une fois votre achat effectué pour avoir accès au contenu !</span>
+                                </h3>
+                            </div>
+                            <div class="col-12">
+                                <h2 class="mt-4 font-party-one">
+                                    <span><img src="{{ asset('img/svg/interrogation.svg') }}" alt="Point d'interrogation" class="svg tall" /></span>
+                                    <span>Le saviez-vous ?</span>
+                                </h2>
+                                <h3 class="h4 mt-2">
+                                    <span class="d-block mt-2">Votre avancée est sauvegardée et partagée entre tous vos appareils au fur et à mesure de votre lecture ! Lorsque vous reprenez un manga vous êtes automatiquement redirigé sur la dernière page débloquée.</span>
+                                    <br />
+                                    <br />
+                                    <span>Bonne lecture sur DrManga !</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions col-12 mt-4">
+                        <div class="row">
+                            <div class="col-4 text-left">
+                                <a href="/" class="btn theme-5 font-party-one">
+                                    <span><img src="{{ asset('img/svg/home.svg') }}" alt="Pilule" class="svg" /></span>
+                                    <span class="mt-2 d-none d-lg-block">Retourner à l'accueil</span>
+                                </a>
+                            </div>
+                            <div class="col-4 text-center">
+                                <a id="recharge-pills" href="{{ path('payment') }}" target="_blank" class="btn theme-5 font-party-one">
+                                    <span><img src="{{ asset('img/svg/pill.svg') }}" alt="Pilule" class="svg" /></span>
+                                    <span class="mt-2 d-none d-lg-block">Se recharger en pilules</span>
+                                </a>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="javascript:window.location.reload(true)" class="btn theme-5 font-party-one">
+                                    <span><img src="{{ asset('img/svg/reload.svg') }}" alt="Pilule" class="svg" /></span>
+                                    <span class="mt-2 d-none d-lg-block">Recharger la page</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

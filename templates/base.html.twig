@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta name="google-site-verification" content="YP-hHNiPn2PAbQfhcqQ9BsXf2gAN0qnHgqn4kI0tXBg" />
+        {% block metaDescription %}
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+            <meta http-equiv="content-language" content="{{ app.request.locale }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="theme-color" content="#1a1a1a"/>
+            <meta name="description" content="{{ 'meta.description'|trans }}">
+            <meta name="keywords" content="DrManga, manga hentai, manga sexe, manga hentai en ligne, meilleurs manga, jouer manga, lire en ligne, manga gratuits en ligne">
+            <meta name="robots" content="index, follow">
+            <meta property="og:title" content="DrManga | Manga hentai en ligne">
+            <meta property="og:description" content="DrManga, plateforme regroupant les meilleurs manga hentai traduits en français - manga compatibles mobile et tablette.">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="{{ app.request.uri }}">
+            <meta property="og:site_name" content=" {{ app.request.host }}">
+            <meta property="og:locale" content="{{ app.request.locale }}">
+            <link href="{{ app.request.host }}" rel="canonical">
+            <link rel="alternate" hreflang="x-default" href="{{ app.request.host }}" />
+        {% endblock %}
+        {% block favicon %}
+            <link id="page_favicon" href="{{ asset('img/favicon/favicon.png') }}" rel="icon" type="image/x-icon">
+        {% endblock %}
+
+        {% block yandex %}
+            <!-- Yandex.Metrika counter -->
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || [];
+
+                {% if not app.request.getHost is same as("127.0.0.1") %}
+                    window.onload = function () {
+                        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+                        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+                        ym(51457322, "init", {
+                            id:51457322,
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true,
+                            ecommerce:"dataLayer"
+                        });
+                   };
+                {% endif %}
+            </script>
+            <noscript><div><img src="https://mc.yandex.ru/watch/51457322" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+            <!-- /Yandex.Metrika counter -->
+        {% endblock %}
+
+        <title>{% block title %}DrManga{% endblock %}</title>
+
+        <link rel="stylesheet" media="all" href="{{ asset('build/base.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        {% block javascriptsHeader %}{% endblock %}
+    </head>
+    <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
+        <div id="content" class="content">
+            {% block header %}
+                {% include 'base/_header.html.twig' %}
+            {% endblock %}
+
+            <div id="wrapper" class="{% block wrapper_class %}container-fluid{% endblock %}">
+                {% block body %}{% endblock %}
+            </div>
+
+            {% block footer %}
+                {% include 'base/_footer.html.twig' %}
+            {% endblock %}
+        </div>
+
+        {% block loginRegister %}
+            {% if not is_granted('ROLE_USER') %}
+                {% include "base/modals/_login-register.html.twig" %}
+            {% endif %}
+        {% endblock %}
+
+        {% block modals %}
+            <!-- Contact modal -->
+            {% if is_granted("ROLE_USER") %}
+                {{ render(controller('App\\Controller\\DefaultController::contact')) }}
+            {% endif %}
+            <!-- Disclaimer modal -->
+            {% include "base/modals/_disclaimer.html.twig" %}
+            <!-- Browser update modal -->
+            {% if true %}
+                {% include "base/modals/_browser-update.html.twig" %}
+            {% endif %}
+        {% endblock %}
+
+        {% block disclaimer %}
+            {% include "base/_disclaimer.html.twig" %}
+        {% endblock %}
+
+        <script src="{{ asset('build/runtime.js') }}"></script>
+        <script src="{{ asset('build/base.js') }}"></script>
+        {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<div id="{{ data.id }}" class="d-flex flex-column">
+    <h2>{{ data.title }} ({{ readingSupport.manga.getVisibleVolumes|length }})</h2>
+    <ul class="row">
+    {% for volume in readingSupport.manga.getVisibleVolumes %}
+        <li class="col-12 col-md-5 col-lg-12 ml-auto mr-auto my-2 my-lg-1 volume rounded-right bg-grey-darker">
+            <a href="{{ path('reading_volume_show', {'mangaSlug': readingSupport.manga.slug, 'volumePosition': volume.position}) }}" class="d-flex align-items-center">
+                <div class="col px-0 flex-row h-100">
+                    <div class="h-100 flex-h-100">
+                        <img src="{{ vich_uploader_asset(volume, 'imageFile') }}" class="rounded-left object-fit-cover" alt="Miniature du volume" />
+                    </div>
+                </div>
+                <div class="col-8 p-lg-0 pl-lg-4 py-xl-3 px-xl-4">
+                    <h3 class="h4 my-1 text-grey-light">{{ volume.name }}</h3>
+                    <h4 class="h5 my-2 text-purple-light">{{ volume.subtitle }}</h4>
+                </div>
+                <div class="col-2">
+                    <img src="{{ asset('img/svg/right-chevron-white.svg') }}" class="svg" alt="Chevron" />
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>

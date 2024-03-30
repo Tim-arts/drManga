@@ -1,0 +1,54 @@
+@import (reference) '../../modules/base/__core';
+@import '../base/_switches';
+
+body {
+    background: #020202 url('/img/bg.jpg') 0 0 no-repeat;
+    background-size: cover;
+
+    @media (max-width: @medium-screen) {
+        background-size: auto;
+    }
+}
+
+#user-information {
+    .element-container {
+        input:not([type="checkbox"]):not([type="radio"]) {
+            background-color: darken(@grey-darker, 3%);
+            border: 2px solid @grey-dark;
+            border-radius: @border-radius-quad;
+            will-change: border-color;
+            transition: border-color @time-transition-025;
+
+            &.valid {
+                .border-color-success();
+            }
+
+            &.invalid {
+                .border-color-error();
+            }
+
+            &:hover {
+                border-color: darken(@grey-light, 10%);
+            }
+
+            &:focus {
+                border: 2px solid @purple-dark;
+                outline: none;
+            }
+        }
+
+        &.pencil-icon {
+            &:after {
+                content: url('/img/svg/pencil.svg');
+                width: @svg-medium-size;
+                height: @svg-medium-size;
+                background-color: darken(@grey-darker, 3%);
+                padding: 2px;
+                .position-direction(top, 9px);
+                .position-direction(right, 16px);
+                .position-state(absolute);
+                .pointer-events-none();
+            }
+        }
+    }
+}

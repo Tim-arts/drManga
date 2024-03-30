@@ -1,0 +1,71 @@
+@import (reference) '../base/_variables';
+
+@import '~lightslider/dist/css/lightslider.min.css';
+
+#wrapper {
+
+	section {
+
+		&.section {
+
+
+
+			.lSSlideOuter .lSPager.lSpg>li.active a,
+			.lSSlideOuter .lSPager.lSpg>li:hover a{
+				background-color: #a244ff;
+			}
+
+			.image-slider{
+				text-align: center;
+				img{
+					max-height: 300px;
+				}
+
+			}
+
+
+			&.image-slider-container {
+				padding: 0 15px;
+				/* Effects */
+				opacity: 0;
+				/*visibility: hidden;*/
+				transition: opacity 1s linear;
+
+				.slick-list {
+					.slick-slide {
+						margin: 0 10px;
+						overflow: hidden;
+						border-radius: @border-radius-quad;
+						height: auto;
+
+						a, picture {
+							display: block;
+						}
+
+						img {
+							width: 100%;
+							border-radius: @border-radius-quad;
+						}
+
+						.image-slider {
+							display: block !important;
+						}
+
+						@media (max-width: @medium-screen) {
+							margin: 0;
+						}
+					}
+
+                    @media (min-width: @extra-large-screen-up) {
+                        margin: 0 auto;
+                    }
+				}
+
+				&.slick-initialized {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

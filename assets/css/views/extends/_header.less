@@ -1,0 +1,145 @@
+/* Import external components from packages */
+@import '~vue-multiselect/dist/vue-multiselect.min.css';
+
+/* Import override */
+@import (once) "../../override/_awesomplete";
+
+/* Import base files */
+@import (reference) '../../modules/base/__utilities';
+@import (once) '../base/_buttons';
+@import (once) '../base/_dropdowns';
+@import (once) '../base/_forms';
+
+nav {
+	&.navbar {
+		border: 0;
+		font-size: @font-size-medium-up;
+		transition: all @time-transition-025;
+		padding: 0 15px;
+		box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+		
+		.navbar-brand {
+			font-weight: 600;
+			margin: 5px 0;
+			padding: @navbar-padding-right @navbar-double-padding;
+			font-size: @font-size-medium-up;
+		}
+
+		.navbar-search-input {
+            // Here is awesomplate code
+        }
+		
+		.navbar-nav {
+			padding: 0;
+
+			@media (max-width: @medium-screen) {
+                padding: 0 @navbar-padding-right;
+			}
+		}
+		
+		.navbar-toggler {
+			margin: 0 @navbar-padding-right;
+		}
+		
+		.btn {
+			margin: @navbar-padding-right 3px;
+			font-size: @font-size-medium;
+		}
+		
+		.navbar-collapse {
+			.navbar-nav {
+				.nav-item {
+					.nav-link {
+						line-height: 1.6;
+						margin: @navbar-padding-right 0;
+						padding: 10px @navbar-padding-right;
+						opacity: .7;
+						font-size: @font-size-medium;
+						text-transform: uppercase;
+						font-weight: 600;
+						/* Effects */
+						will-change: opacity;
+						transition: opacity @time-transition-025;
+						
+						img {
+							&:not(.not-filtered) {
+								filter: grayscale(100%);
+							}
+						}
+						
+						i {
+							font-size: @font-size-large;
+							max-width: @svg-medium-size;
+							position: relative;
+							top: 4px;
+							/* Effects */
+							will-change: color;
+							transition: color @time-transition-025;
+						}
+						
+						&.nav-pill {
+							padding: 0 @navbar-padding-right;
+							
+							.nav-pill-content {
+								padding: 8px;
+								border-radius: 8px;
+								
+								span {
+									font-weight: 700;
+									font-size: @font-size-large;
+									/* Effects */
+									will-change: color;
+									transition: color @time-transition-025;
+								}
+								
+								&.contains-text {
+									span {
+										padding: 0 5px;
+										top: 1px;
+										position: relative;
+									}
+								}
+							}
+							
+							&:hover {
+								span {
+									.text-white();
+								}
+							}
+						}
+						
+						&:hover {
+							opacity: 1;
+							
+							img {
+								&:not(.not-filtered) {
+									filter: none;
+								}
+							}
+							
+							i {
+								.text-white();
+							}
+						}
+						
+						@media (max-width: @medium-screen) {
+							width: 100%;
+						}
+					}
+					
+					&.add {
+						margin-right: -25px;
+						
+						i {
+							transform: scaleX(1.05);
+						}
+
+                        @media (max-width: @medium-screen) {
+                            margin-right: 0;
+                        }
+					}
+				}
+			}
+		}
+	}
+}

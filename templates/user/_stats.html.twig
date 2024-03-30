@@ -1,0 +1,9 @@
+{% for stat in data %}
+    <div class="col-6 col-md-5 col-lg-3 col-xl-1 m-3 p-2 stat {{ stat.class }} rounded bg-grey-darker" {{ stat.additionnalData is defined ? stat.additionnalData|raw }}>
+        <div class="d-flex justify-content-center my-3">
+            <img src="{{ stat.icon }}" class="svg big" alt="{{ stat.alt }}" />
+        </div>
+        <p class="h0 font-weight-bold my-2 text-center">{{ stat.content|raw }}</p>
+        <p class="h5 font-weight-bold text-center text-grey-light">{{ stat.title }}</p>
+    </div>
+{% endfor %}

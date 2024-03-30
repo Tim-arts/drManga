@@ -1,0 +1,63 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_PUBLISHER:
+            - ROLE_USER
+            - ROLE_SONATA_ADMIN
+            - ROLE_APP\ADMIN\READING\MANGAADMIN_VIEW
+            - ROLE_APP\ADMIN\READING\VOLUMEADMIN_VIEW
+            - ROLE_APP\ADMIN\READING\VOLUMEADMIN_LIST
+            - ROLE_APP\ADMIN\READING\MANGAADMIN_LIST
+        ROLE_ADMIN:
+            - ROLE_PUBLISHER
+            - ROLE_APP\ADMIN\READING\AUTHORADMIN_ALL
+            - ROLE_APP\ADMIN\READING\CATEGORYADMIN_ALL
+            - ROLE_APP\ADMIN\READING\MANGAADMIN_ALL
+            - ROLE_APP\ADMIN\READING\MANGA\PAGEADMIN_ALL
+            - ROLE_APP\ADMIN\READING\PUBLISHERADMIN_ALL
+            - ROLE_APP\ADMIN\READING\VOLUMEADMIN_ALL
+            - ROLE_APP\ADMIN\READING\VOLUME\PAGEADMIN_ALL
+            - ROLE_APP\ADMIN\SLIDER\MANGASLIDEADMIN_ALL
+            - ROLE_APP\ADMIN\USERMANAGEMENT\USERADMIN_ALL
+            - ROLE_APP\ADMIN\USERMANAGEMENT\USER\SETTINGSADMIN_ALL
+            - ROLE_APP\ADMIN\STATISTIC\STATISTICADMIN_ALL
+        ROLE_SUPER_ADMIN:
+            - ROLE_ALLOWED_TO_SWITCH
+            - ROLE_ADMIN
+            - ROLE_APP\ADMIN\COMMERCE\PILLOFFERADMIN_ALL
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    access_denied_url: /
+
+    firewalls:
+        main:
+            pattern: ^/
+            user_checker: App\Security\UserChecker
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                login_path: /
+                check_path: fos_user_security_check
+                always_use_default_target_path: false
+                default_target_path:            /
+                target_path_parameter:          _target_path
+                use_referer:                    true
+                success_handler: App\Handler\AuthenticationHandler
+                failure_handler: App\Handler\AuthenticationHandler
+            remember_me:
+                secret:   '%env(APP_SECRET)%'
+            logout:
+                path: fos_user_security_logout
+                target : index
+            anonymous:    true
+            switch_user:  true
+
+    access_control:
+        - { path: admin, roles: ROLE_SONATA_ADMIN, requires_channel: https, host: drmanga\.com$ }
+        - { path: admin, roles: ROLE_SONATA_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https, host: drmanga\.com$ }

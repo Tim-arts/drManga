@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block yandex %}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/views/payment.css') }}">
+{% endblock %}
+
+{% block javascriptsHeader %}
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+    <script src="https://js.braintreegateway.com/web/3.25.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.25.0/js/paypal-checkout.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="mb-4">
+        {% for message in app.flashes('message') %}
+            {% include "user/_warning.html.twig" %}
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="e-s-3"></div>
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-7 col-md-5 col-lg-4 col-xl-3">
+                <div class="row align-items-center border border-white border-width-3 p-3">
+                    <div class="col-2 offset-1 offset-sm-0">
+                        <img src="{{ asset('img/payment/pill.png') }}" class="img-tall object-fit-contain" alt="Pilule" />
+                    </div>
+                    <div class="col-9 col-sm-10">
+                        <h1 class="text-purple-dark font-weight-bold m-0">LES PILULES</h1>
+                        <span>Fais le plein de folie !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center my-3">
+            <div class="col col-xl-8 text-center">
+                <h2>SÉLECTIONNEZ LE MODE DE PAIEMENT</h2>
+                <span class="text-purple-dark">Paiement sécurisé et anonyme, votre relevé mentionnera "SAS BDG" uniquement.</span>
+            </div>
+        </div>
+        <div id="payment-methods" class="row justify-content-center my-4">
+            {%
+                set datas = [
+                    {
+                        color: 'purple',
+                        method: 'securion',
+                        selected: true,
+                        image: asset('img/payment/bank-card.png'),
+                        alt: 'carte bancaire'
+                    },
+                    {
+                        color: 'white',
+                        method: 'paypal',
+                        selected: false,
+                        image: asset('img/payment/paypal.png'),
+                        alt: 'paypal',
+                        url: path('payment_service_paypal_client_token')
+                    },
+                    {
+                        class: 'disabled',
+                        color: 'white',
+                        method: 'paysafecard',
+                        selected: false,
+                        image: asset('img/payment/paysafe-card.png'),
+                        alt: 'paysafecard'
+                    }
+                ]
+            %}
+
+            {% for data in datas %}
+                <div class="col-md my-2">
+                    {% include "payment/_payment-method.html.twig" with data %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row justify-content-center my-4">
+            <div class="col col-xl-8 text-center">
+                <div class="pretty p-default p-bigger p-default p-round p-thick p-smooth p-darker p-no-mx">
+                    <input type="checkbox" id="payment-conditions" name="payment-conditions" />
+                    <div class="state p-success">
+                        <label class="text-purple-dark">Une fois ma commande validée, j'accepte sans réserve les <a href="" class="text-white font-weight-bold">CGV</a> et <a href="" class="text-white font-weight-bold">CGU</a>.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="payment-buttons" class="row justify-content-center my-4">
+            {% for order in orders %}
+                <div class="col-md-6 col-lg my-2 payment-button-container">
+                    {% include "payment/_pill.html.twig" with {payments: true, pill: order.getProducts()[0]} %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/views/payment.js') }}"></script>
+    {% if orderSuccessPrice > 0 %}
+        <script>
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "EUR",
+                    "purchase" : {
+                        "actionField": {
+                            "id" : "TRX987"
+                        },
+                        "products": [
+                            {
+                                "id": "P15432",
+                                "name" : "Pilules",
+                                "price": {{ orderSuccessPrice }},
+                                "brand": "Yandex",
+                                "category": "Pilules",
+                            }
+                        ]
+                    }
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock %}

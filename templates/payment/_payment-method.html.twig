@@ -1,0 +1,15 @@
+<div id="{{ data.method }}" class="payment-method d-flex align-items-center position-relative pointer{{ data.selected ? ' selected' }}{{ data.class is defined ? ' ' ~ data.class }}" data-method="{{ data.method }}" data-url="{{ data.url is defined ? data.url }}">
+    <div class="row flex-grow-1 background background-{{ data.color }}">
+        <div class="col-4 d-flex justify-content-center z-index-1">
+            <div class="pretty p-default p-bigger p-huge p-default p-round p-thick p-smooth p-darker p-no-mx">
+                <input type="radio" id="method-{{ data.method }}" name="method-payment" {{ data.selected ? 'checked' }} />
+                <div class="state p-success">
+                    <label>&nbsp;</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 d-flex z-index-1">
+            <img src="{{ data.image }}" class="img-fluid object-fit-contain pointer-events-none" alt="Icône {{ data.alt }}" />
+        </div>
+    </div>
+</div>

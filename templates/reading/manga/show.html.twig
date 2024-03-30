@@ -1,0 +1,20 @@
+{% extends 'reading/reading-support.html.twig' %}
+
+{% if readingSupport.volumes|length > 0 %}
+    {% set readingSupportPath = 'reading_volume_read' %}
+    {% set
+        readingSupportParams = {
+            'mangaSlug': readingSupport.manga.slug,
+            'volumePosition': readingSupport.volumes.first.position,
+            'pageNumber': lastPage.position ?? 1
+        }
+    %}
+{% else %}
+    {% set readingSupportPath = 'reading_manga_read' %}
+    {% set
+        readingSupportParams = {
+            'slug': readingSupport.manga.slug,
+            'pageNumber': lastPage.position ?? 1
+    }
+    %}
+{% endif %}

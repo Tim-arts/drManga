@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+    db:
+        image: mysql
+        container_name: drmanga_db
+        command: ["--default-authentication-plugin=mysql_native_password"]
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: drmanga
+            MYSQL_USER: drmanga
+            MYSQL_PASSWORD: drmanga
+    php-fpm:
+        build: ./dockerfiles/php-fpm
+        container_name: drmanga_php
+        volumes:
+            - ../:/var/www/drmanga:rw,cached
+            - ../vendor:/var/www/drmanga/vendor:rw,delegated
+            - ./logs/symfony:/var/www/drmanga/var/log:cached
+            - ./conf/php-fpm/drmanga.ini:/usr/local/etc/php-fpm.d/www.conf:ro
+        extra_hosts:
+            - "drmanga.localhost:127.0.0.1"
+    nginx:
+        image: nginx:latest
+        container_name: drmanga_nginx
+        ports:
+            - "8080:80"
+        volumes:
+            - ./logs/nginx:/var/log/nginx:cached
+            - ../:/var/www/drmanga:cached
+            - ../vendor:/var/www/drmanga/vendor:rw,delegated
+            - ./conf/nginx/drmanga.conf:/etc/nginx/conf.d/drmanga.conf:ro
+    node:
+        build: ./dockerfiles/node
+        container_name: drmanga_node
+        volumes:
+            - ../:/var/www/drmanga:cached

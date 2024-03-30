@@ -1,0 +1,20 @@
+{% if mangaSlides|length > 0 %}
+<div class="template">
+    <div class="d-flex template-header">
+        <h1 class="text-white">
+            Nouveautés
+        </h1>
+    </div>
+    <div class="template-content">
+        <ul id="light-slider">
+            {% for slide in mangaSlides %}
+                <li class="image-slider zoom-in">
+                    <a href="{{ slide.url }}">
+                        <img src="{{ vich_uploader_asset(slide, 'imageFile') }}" class="img-fluid" alt="Manga name">
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}

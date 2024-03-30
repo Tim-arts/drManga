@@ -1,0 +1,219 @@
+<!-- Country - City -->
+<!-- <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Pays - Ville',
+            subtitle: 'Votre emplacement actuel'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex flex-column flex-lg-initial col-12 col-lg-6 justify-content-center justify-content-lg-end">
+        <div class="d-flex mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+            <div class="d-flex element-container position-relative pencil-icon">
+                <input type="text" id="user-country" class="p-2 pr-5 mx-1 text-grey-light font-weight-bold" maxlength="30" value="" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-center justify-content-lg-end">
+            <div class="d-flex mt-2 mt-lg-0 element-container position-relative pencil-icon">
+                <input type="text" id="user-city" class="p-2 pr-5 mx-1 text-grey-light font-weight-bold" maxlength="30" value="" />
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Birthday -->
+<!-- <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Date de naissance',
+            subtitle: 'Afin de confirmer votre majorité et l\'afficher publiquement'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %} -->
+    <!-- <div class="d-flex flex-column flex-lg-initial col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        <div class="mt-2 mt-lg-0">
+            <select id="user-select-day" class="theme-profile w-100 w-lg-initial" data-type="birthDateDay">
+                <option selected disabled>Jour</option>
+            </select>
+        </div>
+        <div class="mt-2 mt-lg-0 mx-lg-2">
+            <select id="user-select-month" class="theme-profile w-100 w-lg-initial" data-type="birthDateMonth">
+                <option selected disabled>Mois</option>
+            </select>
+        </div>
+        <div class="mt-2 mt-lg-0">
+            <select id="user-select-year" class="theme-profile w-100 w-lg-initial" data-type="birthDateYear">
+                <option selected disabled>Année</option>
+            </select>
+        </div>
+        {%
+            set _data = {
+                id: 'birthday',
+                visibility: data.visibility.birthday
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div> -->
+</div>
+<!-- Sexe -->
+<!-- <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Sexe',
+            subtitle: 'Afficher votre genre publiquement'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        <div class="mt-2 mt-lg-0">
+            <select id="user-select-gender" class="theme-profile">
+                <option selected disabled>Genre</option>
+            </select>
+        </div>
+        {%
+            set _data = {
+                id: 'gender',
+                visibility: data.visibility.gender
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div>
+</div> -->
+<!-- Stats -->
+<!-- <div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Statistiques',
+            subtitle: 'Afficher les statistiques de votre bibliothèque publiquement'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        {%
+            set _data = {
+                id: 'stats',
+                visibility: data.visibility.stats
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div>
+</div> -->
+</div>
+<!-- <div class="category my-5">
+<h3 class="mt-3 text-center text-lg-left">Mes permissions</h3>
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Newsletter',
+            subtitle: 'Recevoir les newsletter et bénéficier des promotions'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        {%
+            set _data = {
+                id: 'newsletter',
+                visibility: data.visibility.newsletter
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div>
+</div>
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Notifications',
+            subtitle: 'Être alerté des mes notifications par email'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        {%
+            set _data = {
+                id: 'notifications',
+                visibility: data.visibility.notifications
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div>
+</div>
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Cookies',
+            subtitle: 'Bénéficiez de toutes les fonctionnalités mises à disposition'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        {%
+            set _data = {
+                id: 'cookies',
+                visibility: data.visibility.cookies
+            }
+        %}
+
+        {% include "user/_switch-field.html.twig" with _data %}
+    </div>
+</div>
+</div> -->
+{#<div class="category my-5">
+<h3 class="mt-3 text-center text-lg-left">Mes informations bancaires</h3>
+<!-- Payment mean -->
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Mode de paiement',
+            subtitle: 'Choisissez le mode de paiement qui vous correspond'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+
+    </div>
+</div>
+<!-- Card number -->
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Numéro de carte bancaire',
+            subtitle: 'Pour vous faire gagner du temps à chaque paiement'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        <div class="element-container position-relative pencil-icon">
+            <input type="text" id="user-card-number" class="p-2 pr-5 mx-1 text-grey-light font-weight-bold" data-type="creditCardCode" maxlength="16" value="" />
+        </div>
+    </div>
+</div>
+<!-- Security code -->
+<div class="d-flex flex-column flex-lg-initial col-12 field py-3 my-4 align-items-center rounded-lg-round bg-grey-darker">
+    {%
+        set _data = {
+            title: 'Votre code de sécurité',
+            subtitle: 'Le code de sécurité à 3 chiffres se trouve au dos de votre carte'
+        }
+    %}
+
+    {% include "user/_header-field.html.twig" with _data %}
+    <div class="d-flex col-12 col-lg-6 mt-2 mt-lg-0 justify-content-center justify-content-lg-end">
+        <div class="element-container position-relative pencil-icon">
+            <input type="text" id="user-security-code" class="p-2 pr-5 mx-1 text-grey-light font-weight-bold" data-type="CVV" maxlength="3" value="" />
+        </div>
+    </div>
+</div>
+#}

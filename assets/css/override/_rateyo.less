@@ -1,0 +1,23 @@
+.jq-ry-container {
+    .jq-ry-group {
+        svg {
+            padding: 0 1px;
+        }
+    }
+
+    > .jq-ry-group-wrapper {
+        width: auto;
+        margin-left: auto;
+    }
+
+    &:not(.no-svg-resize) {
+        .jq-ry-group {
+            svg {
+                @media (max-width: @medium-screen) {
+                    width: @svg-extra-small-size;
+                    height: @svg-extra-small-size;
+                }
+            }
+        }
+    }
+}

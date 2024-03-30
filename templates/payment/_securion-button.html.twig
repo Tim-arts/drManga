@@ -1,0 +1,15 @@
+<form action="{{ path('payment_service_securion_handle_callback') }}" method="POST">
+    <script
+    src="https://securionpay.com/checkout.js" class="securionpay-button"
+    data-key="{{ securion_public_key }}"
+    data-checkout-request="{{ render(controller('App\\Controller\\PaymentService\\SecurionController::generateCheckoutRequest', { 'order': order.id })) }}"
+    data-class="securion"
+    data-name="DrManga"
+    data-description="{{ pill.name }}"
+    data-image="{{ absolute_url(asset('img/payment/pill.png')) }}"
+    data-email="{{ app.user.email }}"
+    data-checkout-button="Acheter"
+    data-locale="{{ app.request.locale }}">
+    </script>
+    <input type="hidden" name="orderId" value="{{ order.id }}">
+</form>

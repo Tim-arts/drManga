@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* IMPORT EXTERNAL DEPENDENCIES */
+@import (css) '~bootstrap/dist/css/bootstrap.min.css';
+@import (css) '~pretty-checkbox/dist/pretty-checkbox.min.css';
+@import (css) '~jquery-toast-plugin/dist/jquery.toast.min.css';
+
+/* IMPORT INTERNAL DEPENDENCIES */
+@import './modules/src/_selectric';
+
+/* IMPORT OVERRIDE DEPENDENCIES */
+@import './override/_pretty-checkbox';
+@import './override/_jquery-toast';
+
+/* CORE */
+@import "./modules/base/_mixins";
+@import "./modules/base/_variables";
+@import "./modules/base/_colors";
+@import "./modules/base/_utilities";
+@import "./modules/base/_spacings";
+@import "./modules/base/_helpers";
+@import "./modules/base/_typography";
+
+/* UTILITIES */
+@import "./views/base/_animations";
+// @import "utilities/buttons";
+// @import "utilities/cards";
+// @import "utilities/dropdowns";
+// @import "utilities/input-group";
+// @import "utilities/navbars";
+// @import "utilities/pagination";
+// @import "utilities/badges";
+@import "./views/base/_modals";
+// @import "utilities/carousels";
+@import "./views/base/_selects";
+@import "./views/base/_forms";
+// @import "utilities/msc";
+// @import "utilities/list-group";
+// @import "utilities/tables";
+// @import "utilities/switch";
+// @import "utilities/depreciated";
+
+/* CUSTOM */
+@import "./global";

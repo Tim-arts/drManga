@@ -1,0 +1,48 @@
+#modal-login-register {
+	.modal-body {
+		will-change: height;
+		transition: height @time-transition-025;
+		box-shadow: none;
+
+		> section {
+			transition: opacity @time-transition-025;
+			.hidden();
+
+			.close {
+				.hidden();
+			}
+
+			&.open {
+				.show();
+			}
+
+			&.animated {
+				animation-duration: .75s;
+				animation-fill-mode: both;
+				animation-timing-function: ease;
+			}
+
+			&.animatedFadeInUp {
+				opacity: 0;
+			}
+
+			&.fadeInUp {
+				animation-name: fadeInUp;
+			}
+		}
+	}
+	
+	&.fade {
+		transition: opacity .4s ease;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+	}
+	
+	to {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/views/index.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="all-manga" class="section books-template">
+        {%
+            set data = {
+                title: category.name,
+                size: 280,
+                rating: {
+                    status: true
+                },
+                elements: category.mangas,
+                template: 'books',
+                back: true,
+                gutters: false
+            }
+        %}
+
+        {% include "modules/slider/_slider.html.twig" with data %}
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/views/index.js') }}"></script>
+{% endblock %}

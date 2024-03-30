@@ -1,0 +1,47 @@
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+sonata_admin:
+    title: 'DrManga'
+    title_logo: 'img/logo.png'
+    security:
+        handler: sonata.admin.security.handler.role
+        role_admin: ROLE_ADMIN
+        role_super_admin: ROLE_SUPER_ADMIN
+    dashboard:
+        groups:
+            group.commerce:
+                keep_open: true
+                icon: '<i class="fa fa-book"></i>'
+                items:
+                    - App\Admin\Commerce\PillOfferAdmin
+                roles: [ROLE_SONATA_ADMIN]
+            group.reading:
+                keep_open: true
+                icon: '<i class="fa fa-book"></i>'
+                items:
+                    - App\Admin\Reading\AuthorAdmin
+                    - App\Admin\Reading\CategoryAdmin
+                    - App\Admin\Reading\MangaAdmin
+                    - App\Admin\Reading\PublisherAdmin
+                roles: [ROLE_SONATA_ADMIN]
+            group.user_management:
+                keep_open: true
+                icon: '<i class="fa fa-user"></i>'
+                items:
+                    - App\Admin\UserManagement\UserAdmin
+                roles: [ROLE_SONATA_ADMIN]
+            group.slider:
+                keep_open: true
+                icon: '<i class="fa fa-image"></i>'
+                items:
+                    - App\Admin\Slider\MangaSlideAdmin
+                roles: [ROLE_SONATA_ADMIN]
+            group.stats:
+                keep_open: true
+                icon: '<i class="fa fa-image"></i>'
+                items:
+                    - App\Admin\Statistic\StatisticAdmin
+                roles: [ROLE_SONATA_ADMIN]

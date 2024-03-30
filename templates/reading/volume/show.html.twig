@@ -1,0 +1,12 @@
+{% extends 'reading/reading-support.html.twig' %}
+
+{% set readingSupportPath = 'reading_volume_read' %}
+{% set
+    readingSupportParams = {
+        'mangaSlug': readingSupport.manga.slug,
+        'volumePosition': readingSupport.position,
+        'pageNumber': lastPage.position ?? 1
+    }
+%}
+
+{% block content_title %}{{ readingSupport.manga.name }} - {% endblock %}

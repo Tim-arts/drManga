@@ -1,0 +1,41 @@
+FROM php:7-fpm
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -q && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
+
+#RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpq-dev apt-utils mysql-client zlib1g-dev \
+#    libmcrypt-dev libcurl4-nss-dev zip unzip git && apt-get install -y libmagickwand-dev --no-install-recommends
+
+RUN apt-get update && apt-get install -y make libcurl4-gnutls-dev git nano libxml2-dev libpng-dev libzip-dev libmcrypt-dev libfreetype6-dev libjpeg62-turbo-dev libmagickwand-6.q16-dev --no-install-recommends && ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin
+
+RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
+#RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php -r "if (hash_file('sha384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
+
+
+
+
+#RUN pecl install imagick && docker-php-ext-enable imagick
+#RUN apt-get install -y libmcrypt-dev libcurl4-nss-dev zip unzip
+RUN docker-php-ext-install ctype curl dom gd iconv json intl pdo pdo_mysql mysqli tokenizer session zip xml simplexml fileinfo mbstring opcache
+#RUN docker-php-ext-install openssl
+#RUN docker-php-ext-install zlib
+#RUN docker-php-ext-install phar
+
+RUN pecl install imagick && docker-php-ext-enable imagick
+RUN pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt
+
+
+#RUN pecl install xdebug-2.5.5
+#RUN docker-php-ext-enable xdebug
+# RUN sed -i '1 a xdebug.remote_autostart=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.remote_port=9001' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.remote_host="docker.for.mac.localhost"' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.default_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.coverage_enable=0' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.remote_log=/tmp/xdebug.log' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && sed -i '1 a xdebug.idekey=PHPSTORM' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+
+RUN rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/drmanga

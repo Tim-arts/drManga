@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block wrapper_class %}container{% endblock %}
+
+{% block body %}
+    <section id="reset-password" class="section text-center">
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            {{ form_errors(form.plainPassword['first']) }}
+            <div class="form-block form-sm my-4">
+                {{ form_widget(form.plainPassword['first'], {'id': 'password', 'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.new_password', 'minlength': '7', 'data-type': 'password'}}) }}
+            </div>
+            <div class="form-block form-sm my-4">
+                {{ form_widget(form.plainPassword['second'], {'id': 'password-confirmation', 'attr': {'class': 'form-control no-border w-100 text-white bg-grey-dark', 'placeholder': 'form.new_password_confirmation', 'minlength': '7', 'data-type': 'password'}}) }}
+            </div>
+        {{ form_widget(form) }}
+        <div>
+            <button type="submit" class="btn rounded high upper no-border contains-icon theme-2 mt-2 mt-lg-0 mx-auto ml-lg-auto">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</button>
+        </div>
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

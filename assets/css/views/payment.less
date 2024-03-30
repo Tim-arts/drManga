@@ -1,0 +1,87 @@
+@import (reference) '../modules/base/__core';
+
+/* Import internal dependency */
+@import 'base/_pills';
+
+body {
+    background: #020202 url('/img/bg.jpg') 0 0 no-repeat;
+    background-size: cover;
+
+    @media (max-width: @medium-screen) {
+        background-size: auto;
+    }
+}
+
+@method-payment-height: 80px;
+
+.payment-method {
+    height: @method-payment-height;
+    border-radius: @border-radius-double-quad;
+    border: 2px solid @grey-dark;
+    overflow: hidden;
+    will-change: border-color;
+    transition: border-color @time-transition-025;
+    .bg-grey-dark();
+
+    .pretty.p-bigger label {
+        height: 50px;
+        vertical-align: super;
+
+        &:before, &:after {
+            top: 3px !important;
+        }
+    }
+
+    .background {
+        &.background-white {
+            &:after {
+                .bg-white();
+            }
+        }
+
+        &.background-purple {
+            &:after {
+                .bg-purple-dark();
+            }
+        }
+
+        &:after {
+            content: '';
+            width: 80%;
+            height: @method-payment-height * 2;
+            .position-direction(right, -30px);
+            .position-direction(top, -40px);
+            .position-state(absolute);
+            transform: rotate(12deg);
+
+            @media (max-width: @small-screen) {
+                .position-direction(right, -50px);
+            }
+        }
+    }
+
+    &.disabled {
+        filter: grayscale(100%);
+        .pointer-events-none();
+    }
+
+    &.selected {
+        .border-color-purple-dark();
+    }
+
+    &:not(.selected):hover {
+        border-color: fade(@purple-dark, 30%);
+    }
+}
+
+#payment-buttons {
+    .pill-top {
+        h2 {
+            font-family: "Helvetica", Arial, sans-serif;
+        }
+
+        h3 {
+            margin-top: -5px;
+        }
+    }
+}

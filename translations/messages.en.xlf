@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="en">
+  <file id="messages.en">
+    <unit id="Nw0Z0QX" name="input.search">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_header.html.twig:11</note>
+      </notes>
+      <segment>
+        <source>input.search</source>
+        <target>Search</target>
+      </segment>
+    </unit>
+    <unit id="hck2j5L" name="payment.error.problem">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\PaypalController.php:33</note>
+        <note category="file-source" priority="1">src\Controller\PaymentService\SecurionController.php:37</note>
+      </notes>
+      <segment>
+        <source>payment.error.problem</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="Q8cef5E" name="payment.error.paysafe_connection">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\PaysafeController.php:31</note>
+      </notes>
+      <segment>
+        <source>payment.error.paysafe_connection</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="mX812dz" name="payment.success">
+      <notes>
+        <note category="file-source" priority="1">src\Handler\PaymentHandler.php:61</note>
+      </notes>
+      <segment>
+        <source>payment.success</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="qurcyWF" name="payment.error.paysafe_transaction">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\PaysafeController.php:54</note>
+      </notes>
+      <segment>
+        <source>payment.error.paysafe_transaction</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="rQCvMrf" name="payment.error.paysafe_transaction_cancel">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\PaysafeController.php:104</note>
+      </notes>
+      <segment>
+        <source>payment.error.paysafe_transaction_cancel</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="PqDjSqy" name="payment.error.card">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\SecurionController.php:42</note>
+      </notes>
+      <segment>
+        <source>payment.error.card</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="pWVfLky" name="payment.error">
+      <notes>
+        <note category="file-source" priority="1">src\Controller\PaymentService\SecurionController.php:52</note>
+        <note category="file-source" priority="1">src\Handler\PaymentHandler.php:66</note>
+      </notes>
+      <segment>
+        <source>payment.error</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="chn_edB" name="subscribedToNewsletter">
+      <notes>
+        <note category="file-source" priority="1">src\Form\RegistrationType.php:13</note>
+      </notes>
+      <segment>
+        <source>subscribedToNewsletter</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="yYJxfTz" name="birthdate">
+      <notes>
+        <note category="file-source" priority="1">src\Form\RegistrationType.php:13</note>
+      </notes>
+      <segment>
+        <source>birthdate</source>
+        <target></target>
+      </segment>
+    </unit>
+    <unit id="ccCL8qY" name="button.see_more_mangas">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:83</note>
+      </notes>
+      <segment>
+        <source>button.see_more_mangas</source>
+        <target>See more mangas</target>
+      </segment>
+    </unit>
+    <unit id="OMHpA06" name="your_information">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_register-form.html.twig:8</note>
+      </notes>
+      <segment>
+        <source>your_information</source>
+        <target>Your informations</target>
+      </segment>
+    </unit>
+    <unit id="5eegTMV" name="categories.heading">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:44</note>
+      </notes>
+      <segment>
+        <source>categories.heading</source>
+        <target>Categories</target>
+      </segment>
+    </unit>
+    <unit id="JY8MjGL" name="all_manga.heading">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:57</note>
+      </notes>
+      <segment>
+        <source>all_manga.heading</source>
+        <target>All mangas</target>
+      </segment>
+    </unit>
+    <unit id="t4b4Jo4" name="label.day">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>label.day</source>
+        <target>Day</target>
+      </segment>
+    </unit>
+    <unit id="ausiIp4" name="label.month">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>label.month</source>
+        <target>Month</target>
+      </segment>
+    </unit>
+    <unit id="u2_FJj1" name="label.year">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>label.year</source>
+        <target>Year</target>
+      </segment>
+    </unit>
+    <unit id="DSrJz1x" name="register_form.birthdate_rgpd">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_register-form.html.twig:24</note>
+      </notes>
+      <segment>
+        <source>register_form.birthdate_rgpd</source>
+        <target>Birthdate (to verify your majority)</target>
+      </segment>
+    </unit>
+    <unit id="Vdpj5xH" name="filters.popularity">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:69</note>
+      </notes>
+      <segment>
+        <source>filters.popularity</source>
+        <target>By popularity</target>
+      </segment>
+    </unit>
+    <unit id="uofcyEb" name="filters.date">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:72</note>
+      </notes>
+      <segment>
+        <source>filters.date</source>
+        <target>By date</target>
+      </segment>
+    </unit>
+    <unit id="R_InZ3G" name="filters">
+      <notes>
+        <note category="file-source" priority="1">templates\modules\slider\_slider.html.twig:18</note>
+      </notes>
+      <segment>
+        <source>filters</source>
+        <target>Filters</target>
+      </segment>
+    </unit>
+    <unit id="VuXqdIa" name="register_form.label.newsletter">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_register-form.html.twig:49</note>
+      </notes>
+      <segment>
+        <source>register_form.label.newsletter</source>
+        <target>You wish to receive the newsletter which contains offers, informations and free tokens</target>
+      </segment>
+    </unit>
+    <unit id="orOY3HK" name="register_form.label.terms_of_use">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_register-form.html.twig:57</note>
+      </notes>
+      <segment>
+        <source>register_form.label.terms_of_use</source>
+        <target><![CDATA[You confirm to be of age and accept <a href="#" class="font-weight-bold">Terms of Service</a>.]]></target>
+      </segment>
+    </unit>
+    <unit id="2IWydAH" name="login_form.access_account">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_login-form.html.twig:6</note>
+      </notes>
+      <segment>
+        <source>login_form.access_account</source>
+        <target>Access your DrManga account</target>
+      </segment>
+    </unit>
+    <unit id="Dw0YOgh" name="forgot_your_password">
+      <notes>
+        <note category="file-source" priority="1">templates\base\_login-form.html.twig:28</note>
+      </notes>
+      <segment>
+        <source>forgot_your_password</source>
+        <target>Forgot your password ?</target>
+      </segment>
+    </unit>
+    <unit id="zNdHjVZ" name="meta.description">
+      <notes>
+        <note category="file-source" priority="1">templates\base.html.twig:9</note>
+      </notes>
+      <segment>
+        <source>meta.description</source>
+        <target>DrManga, platform bringing together the best manga hentai manga compatible mobile and tablet.</target>
+      </segment>
+    </unit>
+    <unit id="QoCJXjL" name="header.title">
+      <notes>
+        <note category="file-source" priority="1">templates\index.html.twig:3</note>
+      </notes>
+      <segment>
+        <source>header.title</source>
+        <target>Homepage</target>
+      </segment>
+    </unit>
+    <unit id="p_LSbo0" name="by">
+      <notes>
+        <note category="file-source" priority="1">templates\modules\slider\_template-books.html.twig:23</note>
+        <note category="state" priority="1">new</note>
+      </notes>
+      <segment>
+        <source>by</source>
+        <target>By</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

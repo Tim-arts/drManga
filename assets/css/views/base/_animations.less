@@ -1,0 +1,14 @@
+@import (reference) '../../modules/base/_variables';
+
+.zoom-in {
+    > * {
+        will-change: transform;
+        transition: transform @time-transition-05;
+    }
+
+    &:hover {
+        > * {
+            transform: scale(1.15) rotate(-3deg);
+        }
+    }
+}

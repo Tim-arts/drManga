@@ -1,0 +1,39 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+
+.env
+/dist/
+/private/
+/public/bundles/
+/public/build/
+/public/upload/
+/var/
+/vendor/*
+!/vendor/.gitkeep
+*.map
+*.css
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+
+###> node_modules ###
+/node_modules/
+###< node_modules ###
+public/authorized_ip.php
+.idea/
+
+###docker log
+/docker/logs/nginx/*
+!/docker/logs/nginx/.gitkeep
+/docker/logs/symfony/*
+!/docker/logs/symfony/.gitkeep

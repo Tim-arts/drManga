@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="fr">
+  <file id="validators.fr">
+    <unit id="3gsm.Dj" name="fos_user.username.already_used">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.already_used</source>
+        <target>Le nom d'utilisateur est déjà utilisé.</target>
+      </segment>
+    </unit>
+    <unit id="jtmA7tx" name="fos_user.username.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.blank</source>
+        <target>Entrez un nom d'utilisateur s'il vous plait.</target>
+      </segment>
+    </unit>
+    <unit id="ypasfnh" name="fos_user.username.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.short</source>
+        <target>Le nom d'utilisateur est trop court.</target>
+      </segment>
+    </unit>
+    <unit id="VVzgoob" name="fos_user.username.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.long</source>
+        <target>Le nom d'utilisateur est trop long.</target>
+      </segment>
+    </unit>
+    <unit id="vqk8sdH" name="fos_user.email.already_used">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.already_used</source>
+        <target>L'adresse e-mail est déjà utilisée.</target>
+      </segment>
+    </unit>
+    <unit id="g72C3vn" name="fos_user.email.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.blank</source>
+        <target>Entrez une adresse e-mail s'il vous plait.</target>
+      </segment>
+    </unit>
+    <unit id="9GR5Mk6" name="fos_user.email.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.short</source>
+        <target>L'adresse e-mail est trop courte.</target>
+      </segment>
+    </unit>
+    <unit id="Y1eOW4z" name="fos_user.email.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.long</source>
+        <target>L'adresse e-mail est trop longue.</target>
+      </segment>
+    </unit>
+    <unit id="lRE_vn_" name="fos_user.email.invalid">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.invalid</source>
+        <target>L'adresse e-mail est invalide.</target>
+      </segment>
+    </unit>
+    <unit id="Zrr5_qX" name="fos_user.password.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.blank</source>
+        <target>Entrez un mot de passe s'il vous plait.</target>
+      </segment>
+    </unit>
+    <unit id="2k0f5kz" name="fos_user.password.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.short</source>
+        <target>Le mot de passe est trop court.</target>
+      </segment>
+    </unit>
+    <unit id="G6rntWw" name="fos_user.password.mismatch">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.mismatch</source>
+        <target>Les deux mots de passe ne sont pas identiques.</target>
+      </segment>
+    </unit>
+    <unit id="p9q.ZOD" name="fos_user.new_password.blank">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.new_password.blank</source>
+        <target>Entrez un nouveau mot de passe s'il vous plait.</target>
+      </segment>
+    </unit>
+    <unit id="aM77hCJ" name="fos_user.new_password.short">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.new_password.short</source>
+        <target>Le nouveau mot de passe est trop court.</target>
+      </segment>
+    </unit>
+    <unit id="HCwhShp" name="fos_user.current_password.invalid">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.current_password.invalid</source>
+        <target>Le mot de passe est invalide.</target>
+      </segment>
+    </unit>
+    <unit id="kC_fEUz" name="fos_user.group.blank">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.blank</source>
+        <target>Entrez un nom s'il vous plait.</target>
+      </segment>
+    </unit>
+    <unit id="9qy4wvI" name="fos_user.group.short">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.short</source>
+        <target>Le nom est trop court.</target>
+      </segment>
+    </unit>
+    <unit id="nmE6QDQ" name="fos_user.group.long">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.long</source>
+        <target>Le nom est trop long.</target>
+      </segment>
+    </unit>
+    <unit id="WETtdwb" name="fos_group.name.already_used">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_group.name.already_used</source>
+        <target>Le nom est déjà utilisé.</target>
+      </segment>
+    </unit>
+    <unit id="5oydskN" name="password.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>password.long</source>
+        <target>Le mot de passe est trop long ({{ limit }} caractères).</target>
+      </segment>
+    </unit>
+    <unit id="Ygtqrda" name="password.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>password.short</source>
+        <target>Le mot de passe est trop court ({{ limit }} caractères).</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

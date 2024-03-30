@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="en">
+  <file id="validators.en">
+    <unit id="3gsm.Dj" name="fos_user.username.already_used">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.already_used</source>
+        <target>The username is already used.</target>
+      </segment>
+    </unit>
+    <unit id="jtmA7tx" name="fos_user.username.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.blank</source>
+        <target>Please enter a username.</target>
+      </segment>
+    </unit>
+    <unit id="ypasfnh" name="fos_user.username.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.short</source>
+        <target>The username is too short.</target>
+      </segment>
+    </unit>
+    <unit id="VVzgoob" name="fos_user.username.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.username.long</source>
+        <target>The username is too long.</target>
+      </segment>
+    </unit>
+    <unit id="vqk8sdH" name="fos_user.email.already_used">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.already_used</source>
+        <target>The email is already used.</target>
+      </segment>
+    </unit>
+    <unit id="g72C3vn" name="fos_user.email.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.blank</source>
+        <target>Please enter an email.</target>
+      </segment>
+    </unit>
+    <unit id="9GR5Mk6" name="fos_user.email.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.short</source>
+        <target>The email is too short.</target>
+      </segment>
+    </unit>
+    <unit id="Y1eOW4z" name="fos_user.email.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.long</source>
+        <target>The email is too long.</target>
+      </segment>
+    </unit>
+    <unit id="lRE_vn_" name="fos_user.email.invalid">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.email.invalid</source>
+        <target>The email is not valid.</target>
+      </segment>
+    </unit>
+    <unit id="Zrr5_qX" name="fos_user.password.blank">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.blank</source>
+        <target>Please enter a password.</target>
+      </segment>
+    </unit>
+    <unit id="2k0f5kz" name="fos_user.password.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.short</source>
+        <target>The password is too short.</target>
+      </segment>
+    </unit>
+    <unit id="G6rntWw" name="fos_user.password.mismatch">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.password.mismatch</source>
+        <target>The entered passwords don't match.</target>
+      </segment>
+    </unit>
+    <unit id="p9q.ZOD" name="fos_user.new_password.blank">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.new_password.blank</source>
+        <target>Please enter a new password.</target>
+      </segment>
+    </unit>
+    <unit id="aM77hCJ" name="fos_user.new_password.short">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.new_password.short</source>
+        <target>The new password is too short.</target>
+      </segment>
+    </unit>
+    <unit id="HCwhShp" name="fos_user.current_password.invalid">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.current_password.invalid</source>
+        <target>The entered password is invalid.</target>
+      </segment>
+    </unit>
+    <unit id="kC_fEUz" name="fos_user.group.blank">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.blank</source>
+        <target>Please enter a name.</target>
+      </segment>
+    </unit>
+    <unit id="9qy4wvI" name="fos_user.group.short">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.short</source>
+        <target>The name is too short.</target>
+      </segment>
+    </unit>
+    <unit id="nmE6QDQ" name="fos_user.group.long">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_user.group.long</source>
+        <target>The name is too long.</target>
+      </segment>
+    </unit>
+    <unit id="WETtdwb" name="fos_group.name.already_used">
+      <notes>
+        <note category="state" priority="1">obsolete</note>
+      </notes>
+      <segment>
+        <source>fos_group.name.already_used</source>
+        <target>The name is already used.</target>
+      </segment>
+    </unit>
+    <unit id="5oydskN" name="password.long">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>password.long</source>
+        <target>The password is too long ({{ limit}} characters).</target>
+      </segment>
+    </unit>
+    <unit id="Ygtqrda" name="password.short">
+      <notes>
+        <note category="file-source" priority="1">src\Entity\UserManagement\User.php:0</note>
+      </notes>
+      <segment>
+        <source>password.short</source>
+        <target>The password is too short ({{ limit}} characters).</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

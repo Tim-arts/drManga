@@ -1,0 +1,8 @@
+<div class="paypal-btn"
+     id="paypal-button-{{ loop.index }}"
+     data-environment='{{ paypal_env }}'
+     data-order-price='{{ order.totalPrice }}'
+     data-order-id='{{ order.id }}'
+     data-index='{{ loop.index }}'
+     data-url='{{ path('payment_service_paypal_handle_callback') }}'>
+ </div>

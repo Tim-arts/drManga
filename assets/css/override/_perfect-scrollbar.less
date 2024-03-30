@@ -1,0 +1,91 @@
+@import (reference) '../modules/base/_colors';
+@import (reference) '../modules/base/_helpers';
+
+@ps-bg-color: @black-alpha-3;
+@ps-scrollbar-color: @white-alpha-2;
+
+/*
+ * Container style
+ */
+/*
+ * Scrollbar rail styles
+ */
+/*
+ * Scrollbar thumb styles
+ */
+/* MS supports */
+.ps {
+	.ps__rail-x {
+		&:hover {
+			background-color: @ps-bg-color;
+		}
+		&:focus {
+			background-color: @ps-bg-color;
+		}
+	}
+	.ps__rail-y {
+		&:hover {
+			background-color: @ps-bg-color;
+		}
+		&:focus {
+			background-color: @ps-bg-color;
+		}
+	}
+	.ps__rail-x.ps--clicking {
+		background-color: @ps-bg-color;
+	}
+	.ps__rail-y.ps--clicking {
+		background-color: @ps-bg-color;
+	}
+
+    &.ps-hidden {
+        .ps__rail-x {
+            .hidden();
+        }
+
+        .ps__rail-y {
+            .hidden();
+        }
+    }
+}
+.ps__rail-x {
+	&:hover {
+		>.ps__thumb-x {
+			background-color: @ps-scrollbar-color;
+		}
+	}
+	&:focus {
+		>.ps__thumb-x {
+			background-color: @ps-scrollbar-color;
+		}
+	}
+}
+.ps__rail-y {
+	&:hover {
+		>.ps__thumb-y {
+			background-color: @ps-scrollbar-color;
+		}
+	}
+	&:focus {
+		>.ps__thumb-y {
+			background-color: @ps-scrollbar-color;
+		}
+	}
+}
+.ps__thumb-x {
+	background-color: @ps-scrollbar-color;
+}
+.ps__thumb-y {
+	background-color: @ps-scrollbar-color;
+}
+.ps__rail-x.ps--clicking {
+	.ps__thumb-x {
+		background-color: @ps-scrollbar-color;
+		height: 11px;
+	}
+}
+.ps__rail-y.ps--clicking {
+	.ps__thumb-y {
+		background-color: @ps-scrollbar-color;
+	}
+}

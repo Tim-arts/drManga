@@ -1,0 +1,37 @@
+div.awesomplete {
+    width: 100%;
+
+    > ul {
+        background: @grey-dark;
+
+        li {
+            mark {
+                background: @purple-light;
+            }
+
+            &[aria-selected="true"] {
+                background: lighten(@grey-dark, 5%);
+
+                mark {
+                    background: lighten(@purple-light, 5%);
+                }
+            }
+
+            &:hover {
+                border-radius: .3em;
+                color: @white;
+                background: lighten(@grey-dark, 5%);
+
+                mark {
+                    color: @white;
+                    background: lighten(@purple-light, 5%);
+                }
+            }
+        }
+
+        &:before {
+            color: @white;
+            background: @grey-dark;
+        }
+    }
+}

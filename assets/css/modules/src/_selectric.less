@@ -1,0 +1,287 @@
+@import (reference) '../../modules/base/_colors';
+@import (reference) '../../modules/base/_variables';
+
+@selectric-primary-color:       @grey-light;                                       // Color used in border
+@selectric-active-color:        @purple-dark;                                      // Color used in active border
+@selectric-secondary-color:     @grey-light;                                       // Color used in button
+@selectric-text-color:          @grey-light;                                       // Color used in label
+@selectric-bg-color:            @grey-darker;                                      // Background color
+@selectric-btn-bg-color:        @grey-darker;                                      // Button background color
+@selectric-height:              40px;                                              // Outer height
+@selectric-spacing:             16px;                                              // Label left padding
+@selectric-border-width:        @border-width-1;                                               // Outer border width
+@selectric-border-width-double: @border-width-2;
+@selectric-border-radius:       5px;                                               // Border radius
+@selectric-inner-height:        @selectric-height - (@selectric-border-width * 2); // Inner height
+@selectric-font-size:           14px;                                              // Font size
+@selectric-menu-items-shadow:   @z-depth-2;                                        // Shadow
+
+.selectric-wrapper {
+	position: relative;
+	cursor: pointer;
+}
+
+.selectric-responsive {
+	width: 100%;
+}
+
+.selectric {
+	border: @selectric-border-width-double solid @selectric-primary-color;
+	border-radius: @selectric-border-radius;
+	background: @selectric-bg-color;
+	position: relative;
+	overflow: hidden;
+	will-change: border-color;
+	transition: border-color 0 @time-transition-025;
+    min-width: 130px;
+	
+	.label {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin: 0 @selectric-inner-height 0 @selectric-spacing;
+		font-size: @selectric-font-size;
+		line-height: @selectric-inner-height;
+		color: @selectric-text-color;
+		height: @selectric-inner-height;
+		user-select: none;
+	}
+	
+	.button {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: @selectric-inner-height;
+		height: @selectric-inner-height;
+		line-height: @selectric-inner-height;
+		background-color: @selectric-btn-bg-color;
+		color: @selectric-secondary-color;
+		text-align: center;
+		
+		&:after {
+			content: " ";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 0;
+			height: 0;
+			border: 4px solid transparent;
+			border-top-color: @selectric-secondary-color;
+			border-bottom: none;
+		}
+	}
+	
+	&.valid {
+		.border-color-success() !important;
+	}
+	
+	&.invalid {
+		.border-color-error() !important;
+	}
+	
+	&-w-100 {
+        .selectric {
+            width: 100% !important;
+        }
+	}
+
+    &-w-lg-initial {
+        @media (min-width: @large-screen) {
+            .selectric {
+                width: initial !important;
+            }
+        }
+    }
+
+	&-theme-profile {
+        .selectric {
+            background-color: darken(@grey-darker, 3%);
+            border: 2px solid @grey-dark;
+            border-radius: @border-radius-quad;
+
+            .button {
+                background-color: darken(@grey-darker, 3%);
+            }
+        }
+    }
+}
+
+.selectric-focus .selectric {
+	border-color: darken(@selectric-primary-color, 20%);
+}
+
+.selectric-hover .selectric {
+	border-color: darken(@selectric-primary-color, 10%);
+	
+	.button {
+		color: darken(@selectric-secondary-color, 10%);
+		
+		&:after {
+			border-top-color: darken(@selectric-secondary-color, 10%);
+		}
+	}
+}
+
+.selectric-open {
+	z-index: 9999;
+	
+	.selectric {
+		border-color: @selectric-active-color;
+		border-radius: @selectric-border-radius;
+	}
+	
+	.selectric-items {
+		display: block;
+		box-shadow: @selectric-menu-items-shadow;
+	}
+}
+
+.selectric-disabled {
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	cursor: default;
+	user-select: none;
+}
+
+.selectric-hide-select {
+	position: relative;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	
+	select {
+		position: absolute;
+		left: -100%;
+	}
+	
+	&.selectric-is-native {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		
+		select {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			border: none;
+			z-index: 1;
+			box-sizing: border-box;
+			opacity: 0;
+		}
+	}
+}
+
+.selectric-input {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 1px !important;
+	height: 1px !important;
+	outline: none !important;
+	border: none !important;
+	background: none !important;
+}
+
+.selectric-temp-show {
+	position: absolute !important;
+	visibility: hidden !important;
+	display: block !important;
+}
+
+/* Items box */
+.selectric-items {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: @selectric-bg-color;
+	z-index: -1;
+	box-shadow: 0 0 10px -6px;
+	
+	.selectric-scroll {
+		height: 100%;
+		overflow: auto;
+	}
+	
+	.selectric-above & {
+		top: auto;
+		bottom: 100%;
+	}
+
+    ul {
+        overflow-x: hidden;
+    }
+	
+	ul, li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: @selectric-font-size;
+		line-height: 20px;
+		min-height: 20px;
+	}
+	
+	li {
+		display: block;
+		padding: 10px;
+		cursor: pointer;
+		transition: background-color .1s linear, color .1s linear;
+		
+		&.selected {
+			background-color: @purple-dark;
+			color: @white;
+		}
+		
+		&.highlighted {
+			background-color: @purple-dark;
+			color: @white;
+		}
+		
+		&:hover {
+			background-color: @purple-dark;
+			color: @white;
+		}
+	}
+	
+	.disabled {
+		filter: alpha(opacity=50);
+		opacity: 0.5;
+		cursor: default !important;
+		background: none !important;
+		color: #666 !important;
+		user-select: none;
+	}
+	
+	.selectric-group {
+		.selectric-group-label {
+			font-weight: bold;
+			padding-left: 10px;
+			cursor: default;
+			user-select: none;
+			background: none;
+			color: #444;
+		}
+		
+		&.disabled li {
+			filter: alpha(opacity=100);
+			opacity: 1;
+		}
+		
+		li {
+			padding-left: 25px;
+		}
+	}
+}

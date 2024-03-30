@@ -1,0 +1,64 @@
+	@import (reference) 'base/_helpers';
+
+@default-categories-width: 280;
+@default-categories-ratio: 2.15;
+
+@280: @default-categories-width;
+
+/* Create new set */
+.CreateNewCategoriesSet(@280);
+
+#content {
+	.section {
+		&.categories-template {
+			.row {
+				> .tile-280 {
+					> .category {
+						border-radius: @border-radius-quad;
+						.name {
+							color: white;
+							position:absolute;
+							text-align: center;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(161, 82, 255, 0.7);
+							line-height: @temp-height;
+							font-weight: bold;
+							font-size: 24px;
+							@media (max-width: @medium-screen) {
+								line-height: @temp-height / 2;
+								font-size: 12px;
+							}
+						}
+					}
+				}
+
+                > .tile-280:last-child  {
+                    margin-right: 0 !important;
+                }
+			}
+		}
+	}
+}
+
+/* Collection mixin */
+.CreateNewCategoriesSet (@width) {
+	@index: @@width;
+
+	@temp-width: @width * 1px;
+	@temp-height: round((@width / @default-categories-ratio)) * 1px;
+
+	.categories-template {
+		.row {
+			.tile-@{index} {
+				width: @temp-width;
+				height: @temp-height;
+
+				@media (max-width: @medium-screen) {
+					width: @temp-width / 2 ;
+					height: @temp-height / 2;
+				}
+			}
+		}
+	}
+}
