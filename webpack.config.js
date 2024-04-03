@@ -10,7 +10,7 @@ Encore
     //.setManifestKeyPrefix('build/')
 
     // JS files of the application
-    .createSharedEntry('base', './assets/js/base.js')
+    .addEntry('base', './assets/js/base.js')
     .addEntry('views/index', './assets/js/views/index.js')
     .addEntry('views/payment', './assets/js/views/payment.js')
     .addEntry('views/manga/show', './assets/js/views/manga/show.js')
@@ -25,11 +25,7 @@ Encore
 
     // enables LESS support
     // yarn add --dev less-loader less
-    .enableLessLoader(function (options) {
-        // https://github.com/webpack-contrib/less-loader#examples
-        // http://lesscss.org/usage/#command-line-usage-options
-        options.relativeUrls = false;
-    })
+    .enableLessLoader()
 
     // yarn add --dev vue vue-loader@^14 vue-template-compiler
     .enableVueLoader()
